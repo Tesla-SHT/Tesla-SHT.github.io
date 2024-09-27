@@ -13,7 +13,7 @@
 
 <head>
 	
-<title>Berkeley Wiki-Tesla's Blog</title>
+<title>Vim-Tesla's Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -24,7 +24,7 @@
 
 
 
-<meta name="keywords" content="Berkeley,Study,Food,Library,">
+<meta name="keywords" content="Study,Berkeley,CS198-008,">
 <meta name="description" content="">
 
 
@@ -306,18 +306,16 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Berkeley">Berkeley</a></li>
-            
             <li><a href="/tags/Study">Study</a></li>
             
-            <li><a href="/tags/Food">Food</a></li>
+            <li><a href="/tags/Berkeley">Berkeley</a></li>
             
-            <li><a href="/tags/Library">Library</a></li>
+            <li><a href="/tags/CS198-008">CS198-008</a></li>
             
             
         </ul>
         
-        <h1 style="font-size:3em;-webkit-text-stroke: 0.2px #000000;">Berkeley Wiki</h1>
+        <h1 style="font-size:3em;-webkit-text-stroke: 0.2px #000000;">Vim</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -331,12 +329,14 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Tesla</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../../../categories/Berkeley/" target="_blank" >Berkeley</a>
+                         <a href="../../../../categories/Study/" target="_blank" >Study</a>
                     
-                         <a href="../../../../categories/Berkeley/Wiki/" target="_blank" >Wiki</a>
+                         <a href="../../../../categories/Study/Berkeley/" target="_blank" >Berkeley</a>
+                    
+                         <a href="../../../../categories/Study/Berkeley/Notes/" target="_blank" >Notes</a>
                     
                 </div>
-                <p>2024-09-04 20:30:27</p>
+                <p>2024-09-22 01:06:44</p>
             </div>
         </div>
     </div>
@@ -346,96 +346,77 @@
   <div id="article" class="post-content-info">
     
 
-    <h1>Preface</h1>
-<p>Hope this blog will help freshmen to get involved in the campus and live comfortably by providing some useful info about something you’d better know while not included in the official guide or orientations.</p>
-<p>To be honest, it may also like a todo list to remind me to set foot in every corner of Berkeley, so that my content will probably repeat what the Google has said or be very personal. But I do hope you can dear to step into every library and have a peaceful afternoon, or easily get a cola from the beverage machine with a line of strange names on each button.</p>
-<p>Enjoy it! If you wanna add more info, please contact me before I come back :)</p>
-<h1>Library</h1>
-<h2 id="1-Moffit-Library">1. Moffit Library</h2>
-<img src="/images/Berkeley/moffit.jpeg" style="width:50%;margin:auto;display: block"/>
+    <h2 id="Mode-Switching">Mode Switching</h2>
 <ul>
-<li>Link: <a target="_blank" rel="noopener" href="https://www.lib.berkeley.edu/visit/moffitt">https://www.lib.berkeley.edu/visit/moffitt</a></li>
-<li>Location: The usual entrance(facing the Campanile) is the 4th floor, and remember to bring your student ID card.</li>
-<li>Time: At the most time, the 4th and 5th floor are open. 4th floor: Noise study area; 5th floor: Silent study area</li>
-<li>Tips:
-<ul>
-<li>I think this library is the most popular one so that sometimes I can only work on a sofa for a while.</li>
-<li>You can reserve a study space (4 or 8), sit on the sofa or the desk, or even lie on the beanbag.</li>
-<li>You can drink water near the restroom, or buy the beverage outside the lib on the 4th floor.</li>
+<li><code>i/a/o</code>: Enter insert mode (insert before, after, or on a new line).</li>
+<li><code>Esc</code>: Exit insert mode and return to normal mode.</li>
+<li><code>v</code>: Enter visual mode (highlight text).</li>
+<li><code>V</code>: Enter visual line mode (highlight entire lines).</li>
+<li><code>Ctrl + v</code>: Enter visual block mode (highlight blocks of text).</li>
 </ul>
-</li>
-</ul>
-<h2 id="2-Bioscience-Natural-Resources-Public-Health-Library">2. Bioscience, Natural Resources &amp; Public Health Library</h2>
+<h2 id="File-Operations">File Operations</h2>
 <ul>
-<li>Link: <a target="_blank" rel="noopener" href="https://www.lib.berkeley.edu/visit/bioscience">https://www.lib.berkeley.edu/visit/bioscience</a></li>
-<li>Location: The library is located in the Valley Life Sciences Building, behind a dinasour skeleton. Just get into and turn left, you will see a group of computers and the seats.</li>
-<li>Time: Usually, the library is open from 9:00 to 21:00</li>
-<li>Tips:
-<ul>
-<li>The lib is not that big, but the students are not that many. So it’s a good place to study.</li>
-<li>It’s the most west library on the campus (maybe in northwest, there are also some spaces around Brown’s).</li>
-<li>Every seat has a charging port and a light, just like the lib in Westlake.</li>
+<li><code>:w</code>: Save the file.</li>
+<li><code>:wq</code>: Save and quit.</li>
+<li><code>:q</code>: Quit the editor.</li>
+<li><code>:q!</code>: Force quit without saving.</li>
+<li><code>:set number</code>: Show line numbers.</li>
+<li><code>:set nonumber</code>: Hide line numbers.</li>
+<li><code>:e filename</code>: Open a file in Vim.</li>
+<li><code>:r filename</code>: Insert the content of another file into the current file.</li>
+<li><code>:! command</code>: Execute an external command (e.g., :!ls to list files).</li>
 </ul>
-</li>
-</ul>
-<h1>Dining</h1>
-<h2 id="Meal-Plan">Meal Plan</h2>
-<p>There are many meal plans for students to choose. Roughly speaking, the swipe and flex dollar plans. The swipe plan is like a buffet, you can swipe your card to get a meal in the dining hall. The flex dollar plan is like a debit card, you can use it to buy food or snacks in restaurants. I bought the meal plan with 5 swipes, and I think it’s enough for me.</p>
-<h2 id="Dining-Commons-Large-Dining-Halls">Dining Commons (Large Dining Halls)</h2>
-<p>All these meals are self-service, so you can eat as much as you can. So it’s a good choice to have brunch in the dining hall.</p>
-<table>
-<thead>
-<tr>
-<th>Meal</th>
-<th>Price</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Breakfast</td>
-<td>$10</td>
-</tr>
-<tr>
-<td>Lunch</td>
-<td>$11</td>
-</tr>
-<tr>
-<td>Dinner</td>
-<td>$12</td>
-</tr>
-</tbody>
-</table>
-<h3 id="1-Crossroads">1. Crossroads</h3>
+<h2 id="Cursor-Movement">Cursor Movement</h2>
 <ul>
-<li>Location: Northeast of the campus (a little east from Cafe 3)</li>
-<li>The biggest dining hall on the campus, with a variety of food and drinks, including salad, pizza, rice, noodels, dessert and burgers. And it will change the menu everyday.</li>
+<li><code>h/j/k/l</code>: Move the cursor left, down, up, and right.</li>
+<li><code>b</code>: Move to the beginning of the current/previous word.</li>
+<li><code>e</code>: Move to the end of the current/next word.</li>
+<li><code>w</code>: Move to the beginning of the next word.</li>
+<li><code>0</code>: Move to the beginning of the line.</li>
+<li><code>$:</code> Move to the end of the line.</li>
+<li><code>G</code>: Move to the end of the file.</li>
+<li><code>gg</code>: Move to the beginning of the file.</li>
+<li><code>Ctrl + f</code>: Scroll forward one page.</li>
+<li><code>Ctrl + b</code>: Scroll backward one page.</li>
+<li><code>H</code>: Move to the top of the screen.</li>
+<li><code>M</code>: Move to the middle of the screen.</li>
+<li><code>L</code>: Move to the bottom of the screen.</li>
+<li><code>Ctrl + o</code>: Jump back to the previous cursor position.</li>
+<li><code>Ctrl + i</code>: Jump forward to the next cursor position.</li>
 </ul>
-<h3 id="2-Cafe-3">2. Cafe 3</h3>
+<h2 id="Editing-Operations">Editing Operations</h2>
 <ul>
-<li>location: South of the campus</li>
-<li>The dining hall is smaller than Crossroads, but the food is also delicious, like rice, macaroni and salad.</li>
+<li><code>dd</code>: Delete a line.</li>
+<li><code>d</code> motion: Delete text following a movement (e.g., dw to delete a word).</li>
+<li><code>x</code>: Delete a character.</li>
+<li><code>u</code>: Undo the last operation.</li>
+<li><code>Ctrl + r</code>: Redo the last undone operation.</li>
+<li><code>yy</code>: Copy (yank) a line.</li>
+<li><code>y</code> motion: Copy text following a movement (e.g., yw to copy a word).</li>
+<li><code>p</code>: Paste the copied or deleted text.</li>
+<li><code>r</code>: Replace a single character under the cursor.</li>
+<li><code>cw</code>: Change (delete and enter insert mode) a word.</li>
+<li><code>ci</code>: Change inside quotes.</li>
+<li><code>&gt;&gt;</code>: Indent a line.</li>
+<li><code>&lt;&lt;:</code> Un-indent a line.</li>
 </ul>
-<h3 id="3-Foothill">3. Foothill</h3>
+<h2 id="Search-and-Replace">Search and Replace</h2>
 <ul>
-<li>location: Northeast of the campus</li>
-<li>Similiar to Cafe 3, but the dining hall is more beautiful and wide. But it’s on the hill, so you need to climb up to get there.</li>
-<li>I always want to have a drink of Berkeley cola, but I can only find it in Footill. However, the cola has no bubbles…</li>
+<li><code>/pattern</code>: Search for a pattern.</li>
+<li><code>?pattern</code>: Search for a pattern in reverse.</li>
+<li><code>n</code>: Repeat the search in the same direction.</li>
+<li><code>N</code>: Repeat the search in the opposite direction.</li>
+<li><code>:%s/old/new/g</code>: Replace all occurrences of “old” with “new” in the file.</li>
+<li><code>:noh</code>: Clear search highlighting.</li>
 </ul>
-<h3 id="4-Clark-Kerr">4. Clark Kerr</h3>
+<h2 id="Buffer-and-Window-Management">Buffer and Window Management</h2>
 <ul>
-<li>location: Too far away from the main campus…</li>
-</ul>
-<h2 id="Campus-Restaurants-Small-Dining-stores">Campus Restaurants (Small Dining stores)</h2>
-<p>The price is 17$ for a meal even if you have a student card, and the food is ordered by the menu, so using swipes is a better choice.</p>
-<h3 id="1-Golden-Bear-Cafe">1. Golden Bear Cafe</h3>
-<ul>
-<li>location: Near the south gate of the campus</li>
-<li>The best choice to have a quick meal due to its location and food type: Burger, salad and drinks.</li>
-</ul>
-<h3 id="2-Brown’s">2. Brown’s</h3>
-<ul>
-<li>location: Northwest of the campus</li>
-<li>The food is composed of rice/pea, chicken/salmon, a side and a drink. The taste is good. But DO NOT go there after a class, you will line up around the whole hallway.</li>
+<li><code>:bn</code>: Go to the next buffer.</li>
+<li><code>:bp</code>: Go to the previous buffer.</li>
+<li><code>:bd</code>: Close the current buffer.</li>
+<li><code>:split</code>: Split the window horizontally.</li>
+<li><code>:vsplit</code>: Split the window vertically.</li>
+<li><code>Ctrl + w w</code>: Switch between windows.</li>
 </ul>
 
   </div>
@@ -497,23 +478,24 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 
     <div class="post-paging">
     
-    <a href="/2024/09/11/Linux/">
+    <a href="/posts/51833.html">
         <div class="post-paging-last">
             <span>上一篇</span>
-            <p>Linux</p>
+            <p>Efficient Algorithms and Intractable Problems</p>
         </div>
     </a>
     
 
     
-    <a href="/2024/09/03/Master%20Theorem/">
+    <a href="/posts/15691.html">
         <div class="post-paging-next">
             <span>下一篇</span>
-            <p>Master Theorem</p>
+            <p>Linux</p>
         </div>
     </a>
     
 </div>
+
 </div>
 		
 <div class="footer">

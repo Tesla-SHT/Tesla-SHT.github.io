@@ -1163,8 +1163,8 @@ hue-6-2: #e6c07b
   font-size: 20px;
 }
 .post #post-toc ol {
-  color: red;
-  list-style-type: none;
+  color: red!important;
+  background-color: #eee;
 }
 .post #post-toc ol a {
   display: inline;
@@ -1174,9 +1174,6 @@ hue-6-2: #e6c07b
 }
 .post #post-toc ol .toc-text {
   color: #006af7;
-}
-.post #post-toc ol li {
-  list-style-type: none;
 }
 .post-header-background {
   position: relative;
