@@ -109,11 +109,11 @@
   box-sizing: border-box;
 }
 #article ol {
-  padding: 10px 30px;
+  padding: 5px 20px;
 }
 #article ol li {
   margin-left: 15px;
-  padding: 7px;
+  padding: 3px;
 }
 #article ul {
   margin: 5px 0;

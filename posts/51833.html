@@ -348,7 +348,24 @@
   <div id="article" class="post-content-info">
     
 
-    
+    <h1>Introduction</h1>
+<p>Although the content of this class covers many knowledge that OIers have learned, I still gain some interesting insights from it, like a new way to Vertex Contraction, brief explanation of short path algorithms…</p>
+<h1>Master Theorem</h1>
+<p><a href="25951">Master Theorem</a></p>
+<h1>Graph</h1>
+<h2 id="Vertex-Contraction">Vertex Contraction</h2>
+<h3 id="Kosaraju’s-Algorithm">Kosaraju’s Algorithm</h3>
+<ol>
+<li>Reverse the graph.</li>
+<li>DFS the reversed graph and get the finishing time of each node.</li>
+<li>DFS the original graph according to the finishing time. The nodes in the same SCC will be visited in the same DFS.</li>
+</ol>
+<h2 id="Shortest-Path">Shortest Path</h2>
+<h3 id="1-Dijkstra’s-Algorithm">1. Dijkstra’s Algorithm</h3>
+<p>We can imagine the algorithm as water flowing from the source to the destination. The speed of the flowing is 1 distance/s and theorically we will check whether nodes are immersed at each time.</p>
+<h3 id="2-Bellman-Ford-Algorithm">2. Bellman-Ford Algorithm</h3>
+<p>This algorithm mainly solve the problem of negative weight edges. the outest loop is the number of hops, and if after V-1 times, the distance is still updated, then there must be a negative cycle since there must be a circle in this path.</p>
+
   </div>
   <div id="gitalk-container"></div>
 </div>
