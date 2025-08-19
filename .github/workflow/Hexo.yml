@@ -1,0 +1,38 @@
+name: Deploy Hexo with hexo-deployer-git
+
+on:
+  push:
+    branches:
+      - source # 确保这是你的源代码分支
+
+jobs:
+  build-and-deploy: # 只有一个任务，更简单
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 检出代码 (保留)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. 设置 Node.js 环境 (保留)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: 'npm'
+
+      # 3. 安装依赖 (保留)
+      - name: Install Dependencies
+        run: npm install
+
+      # 4. 配置 Git 用户信息 (必需步骤)
+      - name: Configure Git
+        run: |
+          git config --global user.name "Tesla-SHT"
+          git config --global user.email "2036230339@qq.com"
+
+      # 5. 执行部署 (核心步骤)
+      - name: Generate and Deploy
+        env:
+          # 在这里注入你的“车钥匙”
+          HEXO_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
+        run: npx hexo deploy --generate

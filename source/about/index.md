@@ -2,9 +2,13 @@
 title: About Me
 date: 2024-8-31
 aubot: TeslaTank
-portrait: 'https://cdn.jsdelivr.net/gh/Tesla-SHT/Blog_Image@main/Image62042b76de5f4d3fc1e8c4d75ae74b0.jpg'
-describe: '一个阳光快乐的BOY,在正合适的年龄里希望遇见正好的你。'
+portrait: /images/Portrait.jpg
+describe: 'I came, I saw, I conquered.'
 type: "about"
 layout: "about"
 comments: false
 ---
+# About Me
+I'm an third-year undergraduate student at Westlake University, visiting UCB for a semester. I'm interested in computer science, especially in the field of AI and computer vision, although my major is Electronic and Information Engineering. 
+# Blog Content Plan
+This blog is mainly about my daily life to record some moments or ideas, and probably some study cheating sheets and technical notes. But all in all, I hope it can motivate me to talk with myself and the world, no matter the content is elegant or vulgar, boring or exciting, tough or simple. 

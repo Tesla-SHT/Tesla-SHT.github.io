@@ -3,18 +3,22 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Personal Blog
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: Tesla
 language: en
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://tesla-sht.github.io/hexo
-permalink: :year/:month/:day/:title/
+url: https://tesla-sht.github.io
+permalink: posts/:abbrlink.html
+abbrlink:
+  alg: crc32  # ç®—æ³•ï¼šcrc16(default) and crc32
+  rep: hex    # è¿›åˆ¶ï¼šdec(default) and hex
+#add v7.8.0
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -32,7 +36,7 @@ skip_render:
 
 # Writing
 new_post_name: :title.md # File name of new posts
-default_layout: post
+default_layout: draft
 titlecase: false # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
@@ -43,19 +47,12 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
-syntax_highlighter: highlight.js
-highlight:
-  enable: false
-  line_number: false
-  auto_detect: true
-  tab_replace: ''
-  wrap: true
-  hljs: true
+syntax_highlighter: prismjs
 prismjs:
-  enable: false
   preprocess: true
   line_number: true
-  tab_replace: ''
+  line_threshold: 0
+  tab_replace: ""
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -66,10 +63,10 @@ index_generator:
   path: ''
   per_page: 9
   order_by: -date
-## ÏÂÃæ»¹ÓĞ¸ö 10 µÄ ĞŞ¸ÄÎª 9
+## ï¿½ï¿½ï¿½æ»¹ï¿½Ğ¸ï¿½ 10 ï¿½ï¿½ ï¿½Ş¸ï¿½Îª 9
 
-## Ê×Ò³ÎÄÕÂ²¼¾Ö Ä¬ÈÏ 'card' ¿ÉÑ¡Ôñ 'block-card'
-home_layout: block-card
+## ï¿½ï¿½Ò³ï¿½ï¿½ï¿½Â²ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½ 'card' ï¿½ï¿½Ñ¡ï¿½ï¿½ 'block-card'
+home_layout: card
 
 # Category & Tag
 default_category: uncategorized
@@ -105,11 +102,44 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: Quiet
 
+
+#markdown
+markdown:
+  preset: 'default'
+  render:
+    html: true
+    xhtmlOut: false
+    langPrefix: 'language-'
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: 'â€œâ€â€˜â€™'
+  enable_rules:
+  disable_rules:
+  plugins:
+    - name: '@renbaoshuo/markdown-it-katex'
+  anchors:
+    level: 2
+    collisionSuffix: ''
+    permalink: false
+    permalinkClass: 'header-anchor'
+    permalinkSide: 'left'
+    permalinkSymbol: 'Â¶'
+    case: 0
+    separator: '-'
+  images:
+    lazyload: false
+    prepend_root: false
+    post_asset: false
+  inline: false  # https://markdown-it.github.io/markdown-it/#MarkdownIt.renderInline
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/Tesla-SHT/Tesla-SHT.github.io
+  repo: https://github.com/Tesla-SHT/Tesla-SHT.github.io.git
   # example, https://github.com/hexojs/hexojs.github.io
   branch: main
+  token: $HEXO_DEPLOY_KEY
+  message: Add EGS-SLAM, math formula, and fix some bugs
 
