@@ -141,5 +141,5 @@ deploy:
   # example, https://github.com/hexojs/hexojs.github.io
   branch: main
   token: $HEXO_DEPLOY_KEY
-  message: Add EGS-SLAM, math formula, and fix some bugs
+  message: Track Quiet theme udpate
 

@@ -1,0 +1,102 @@
+# 网站标题
+title: Home
+# 网站标题后缀
+suffix: Tesla's Blog
+# 作者名称
+author: Tesla
+# 网站关键字
+keyword: Blog, Daily, Study
+#false是否开启文章背景图显示(随机图片)
+is_article_img: true  
+# 网站描述
+web_description: Discription
+# 首页文章布局 默认 'card' 可选择 'block-card'
+home_layout: block-card
+# 导航名称
+menus_title:
+  home: HOME
+  archive: ARCHIVE
+  categories: CATEGORIES
+  tags: TAGS
+  links: LINKS
+  about: ABOUT
+# 导航 （不建议修改）
+menus:
+  home: /
+  archive: /archives
+  categories: /categories
+  tags: /tags
+  links: /links
+  about: /about
+  
+# logo
+logo: /image/logo.png
+# 网页标签上那个小图标 一定要用本地存储
+icon: /image/favicon.ico
+# 每个页面的展示的图标和一句话
+headers:
+    home: {
+      message: "Our senses enable us to perceive only a minute portion of the outside world.",
+      icon: "/image/logo.png"
+    }
+    archives: {
+      # 这里会替换掉两个变量{ year 年，number 总数 } 当然也可以不写这两个变量
+      message: "The life is a montage.",
+      icon: "https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imgicon-remixicon.svg"
+    }
+    tags: {
+      message: "The path to each doorway, the trace of each journey, and the index of each memory.",
+      icon: "https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imgtags.svg"
+    }
+    links: {
+      message: "You should be the one who knows the way.",
+      icon: "https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imga20r7-cftji.svg"
+    }
+    categories: {
+      message: "The growth of a sprout, the birth of an idea.",
+      icon: "https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imgblogmyCategory.svg"
+    }
+
+# 网页访问统计
+web_analytics:  
+  enable: true #需要改为true
+  baidu: 4b5fe1472f22fadsfs  # （替换）百度统计的 Key，参见 https://tongji.baidu.com/sc-web/10000033910/home/site/getjs?siteId=13751376 代码获取中 hm.js? 后边的字符串
+# 评论 
+gitalk:
+  clientID: Ov23liKailJtkmjTAZy6
+  clientSecret: 9dfc4b9fe1daea1961070e6a9ea76f3036b0df9c
+  repo: Blog_Image
+  owner: Tesla-SHT
+  admin: ['Tesla-SHT']
+# 底部显示的图标（github 或者其他）
+bottomIcon: 
+  #可以多个
+  - {
+    #描述名称
+    name: 'Github',
+    #图标    
+    iconLink: 'https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png',
+    #跳转链接    
+    toUrl: 'https://github.com/Tesla-SHT'
+  }
+# 友情链接
+linksList:
+  - {
+    title: 'Westlake University',
+    intro: 'Official Website',
+    link: 'https://https://westlake.edu.cn/',
+    image: 'https://cdn.jsdelivr.net/gh/Tesla-SHT/Blog_Image@main/ImageWestlakelogo.jpg'
+  }
+  - {
+    title: 'Alpha College',
+    intro: 'One of the four colleges of Westlake University',
+    link: 'https://tesla-sht.github.io/Alpha_College',
+    image: 'https://cdn.jsdelivr.net/gh/Tesla-SHT/Blog_Image@main/Imaget-logo.png'
+  }
+
+#默认的cover (默认缩略图) 在没有填写（这里可以替换（可以是api也可以是固定的图））
+# https://api.ixiaowai.cn/gqapi/gqapi.php
+# https://tuapi.eees.cc/api.php?type=302&category=fengjing
+default_cover: https://picsum.photos/1920/1080?random
+mathjax:
+   enable: false
