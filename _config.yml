@@ -141,5 +141,5 @@ deploy:
   # example, https://github.com/hexojs/hexojs.github.io
   branch: main
   token: $HEXO_DEPLOY_KEY
-  message: Track Quiet theme udpate
+  message: Add Lookup and Register Token, update Baidu Analytics
 
