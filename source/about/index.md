@@ -59,6 +59,9 @@ comments: false
   <article class="publication-item">
     <div class="pub-venue">IROS 2026</div>
     <div class="pub-body">
+      <div class="pub-figure">
+        <img src="/images/Event3R/pipeline.png" alt="Event3R pipeline">
+      </div>
       <h3>Event3R: Asynchronous-to-Global 3D Reconstruction from Event Camera via Spatial-Temporal Feature Aggregation</h3>
       <p class="pub-authors">Jian Huang*, <strong>Haotian Shen*</strong>, Xinhao Lou, Chengrui Dong, Wenpu Li, Peidong Liu&dagger;</p>
       <p class="pub-summary">A feed-forward event-camera reconstruction framework that predicts globally aligned 3D point clouds from asynchronous event streams.</p>
@@ -68,6 +71,9 @@ comments: false
   <article class="publication-item">
     <div class="pub-venue">ICRA 2026</div>
     <div class="pub-body">
+      <div class="pub-figure">
+        <img src="/images/ED-SLAM/pipeline.png" alt="ED-SLAM pipeline">
+      </div>
       <h3>ED-SLAM: Event-Depth Gaussian Splatting SLAM</h3>
       <p class="pub-authors">Jian Huang*, <strong>Haotian Shen*</strong>, Xinhao Lou, Peidong Liu&dagger;</p>
       <p class="pub-summary">An event-depth Gaussian Splatting SLAM system with robust patch-based tracking for long event streams and high-fidelity reconstruction.</p>
