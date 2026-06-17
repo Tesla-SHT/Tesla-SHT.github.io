@@ -11,6 +11,9 @@ if (page.title) {
 <link rel="shortcut icon" type="image/x-icon" href="<%- theme.icon %>">
 
 <%- css('css/index.css') %>
+<% if (page.type === 'about' || page.layout === 'about') { %>
+<%- css('css/pages/about.css') %>
+<% } %>
 <% if(page.tags && page.tags.data.length) { 
   let text = ''
   %>
