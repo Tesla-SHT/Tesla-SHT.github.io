@@ -14,7 +14,7 @@ categories:
   - Robotics
   - Humanoid Control
 toc: true
-cover:
+cover: /images/BeyondMimic/pipeline.jpg
 ---
 
 # BeyondMimic

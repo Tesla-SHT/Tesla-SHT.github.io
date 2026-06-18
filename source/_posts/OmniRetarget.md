@@ -14,7 +14,7 @@ categories:
   - Robotics
   - Motion Retargeting
 toc: true
-cover:
+cover: /images/OmniRetarget/pipeline.png
 ---
 
 # OmniRetarget

@@ -13,7 +13,7 @@ categories:
   - Robotics
   - Motion Imitation
 toc: true
-cover:
+cover: /images/DeepMimic/pipeline.png
 ---
 
 # DeepMimic

@@ -142,4 +142,4 @@ deploy:
   # example, https://github.com/hexojs/hexojs.github.io
   branch: main
   token: $HEXO_DEPLOY_KEY
-  message: Add concise robotics paper notes
+  message: Add robotics paper pipeline covers
