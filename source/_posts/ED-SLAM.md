@@ -3,13 +3,16 @@ title: ED-SLAM
 abbrlink: 67f0b1ee
 date: 2025-09-24 01:28:53
 tags:
-    - SLAM
+    - Paper
     - Computer Vision
-    - Event
+    - SLAM
+    - Event Camera
     - 3DGS
+    - Gaussian Splatting
 categories:
     - Paper
     - Computer Vision
+    - SLAM
 cover: /images/ED-SLAM/pipeline.png
 mathjax: true
 toc: true

@@ -2,11 +2,14 @@
 title: Register Token
 tags:
   - Paper
+  - AI
+  - Vision Transformer
   - Token
   - Transformer
 categories:
   - Paper
   - AI
+  - Transformer
 cover: images/Register/1.jpg
 abbrlink: a4caa571
 date: 2025-08-19 19:41:59

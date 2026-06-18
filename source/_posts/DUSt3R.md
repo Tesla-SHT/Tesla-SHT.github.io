@@ -6,9 +6,11 @@ tags:
     - Paper
     - Computer Vision
     - 3D Reconstruction
+    - Vision Foundation Model
 categories:
     - Paper
     - Computer Vision
+    - 3D Reconstruction
 cover: /images/DUSt3R/arch.png
 mathjax: true
 ---
@@ -60,4 +62,3 @@ It is the 3D distance error between the true points and PointMap points
 $$ L_{conf}=\sum_{v=1,2} \sum_{i\in D^v} C_i^{v,1}l_{regr}(v,i)-\alpha \log C_i^{v,1} $$
 
 Multiplication of the confidence value and the 3D distance error, so that the confidence with larger distance will be lowered
-

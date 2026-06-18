@@ -1,16 +1,17 @@
 ---
 title: 3DGS
 tags:
-  - CV
-  - 3DGS
-  - Notes
   - Paper
+  - Computer Vision
+  - 3D Reconstruction
+  - 3DGS
+  - Gaussian Splatting
 abbrlink: f91374c3
 date: 2025-02-10 19:55:16
 categories:
-    - Study
-    - Notes
-    - CV
+    - Paper
+    - Computer Vision
+    - 3D Reconstruction
 mathjax: true
 cover: /images/3DGS/NeRFvs3DGS.jpg
 toc: true
@@ -94,6 +95,5 @@ SfM sample points, $\Sigma$, RGB, $\alpha$ will be optimized by backpropagation.
 3.  **Patchification**: 
     - Split the screen into 16x16 tiles
     - For each tile, only keep the Gaussian projections overlapped with the tile (if covering more than one tiles, copy and tag it to be unique in each tile), which reduces the computation complexity.
-
 
 

@@ -2,11 +2,12 @@
 title: Silicon Valley
 tags:
   - Travel
+  - Silicon Valley
   - Stanford
-  - Apple-Park
+  - Apple Park
 categories:
-  - Berkeley
   - Travel
+  - California
 cover: /images/20240901/theThinker.jpg
 abbrlink: 5045
 date: 2024-09-01 19:50:00

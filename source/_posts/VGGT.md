@@ -6,9 +6,11 @@ tags:
     - Paper
     - Computer Vision
     - 3D Reconstruction
+    - Vision Foundation Model
 categories:
     - Paper
     - Computer Vision
+    - 3D Reconstruction
 cover: /images/VGGT/image.png
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: Master Theorem
 tags:
-  - Algorithm
   - Study
+  - Algorithms
   - CS170
+  - Master Theorem
 categories:
   - Study
   - Berkeley
-  - Notes
   - CS
 cover: /images/Master Theo.png
 mathjax: true

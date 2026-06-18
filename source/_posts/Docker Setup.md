@@ -7,6 +7,7 @@ tags:
 - Linux
 - Docker
 - ROS
+- Setup
 categories:
 - Linux
 - System

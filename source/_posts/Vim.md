@@ -2,13 +2,13 @@
 title: Vim
 cover: /images/Vim.jpeg
 tags:
-  - Berkeley
-  - Study
-  - CS198-008
+  - Vim
+  - Editor
+  - Linux
+  - Command
 categories:
-  - Study
-  - Berkeley
-  - Notes
+  - Tools
+  - Editor
 abbrlink: 44303
 date: 2024-09-22 01:06:44
 ---

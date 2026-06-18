@@ -7,6 +7,12 @@ tags:
     - Computer Vision
     - 3D Reconstruction
     - Event Camera
+    - 3DGS
+    - Gaussian Splatting
+categories:
+    - Paper
+    - Computer Vision
+    - 3D Reconstruction
 cover: /images/EvGGS/arch.png
 mathjax: true
 ---

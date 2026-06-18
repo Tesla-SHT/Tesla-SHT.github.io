@@ -4,10 +4,13 @@ tags:
   - Paper
   - Computer Vision
   - SLAM
-  - Event
+  - Event Camera
+  - 3DGS
+  - Gaussian Splatting
 categories:
   - Paper
   - Computer Vision
+  - SLAM
 cover: /images/EGS-SLAM/Model.png
 mathjax: true
 abbrlink: 778f5e7a

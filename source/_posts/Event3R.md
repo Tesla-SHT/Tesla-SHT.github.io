@@ -7,9 +7,11 @@ tags:
     - Computer Vision
     - 3D Reconstruction
     - Event Camera
+    - Vision Foundation Model
 categories:
     - Paper
     - Computer Vision
+    - 3D Reconstruction
 cover: /images/Event3R/pipeline.png
 mathjax: true
 toc: true

@@ -5,13 +5,14 @@ date: 2025-08-20 17:05:29
 updated: 2026-06-18 21:35:00
 tags:
 - Linux
-- System
 - Command
-- AI
+- Shell
+- Git
+- CUDA
+- Python
 categories:
 - Linux
 - System
-- AI
 toc: true
 cover:
 ---

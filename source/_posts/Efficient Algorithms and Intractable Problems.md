@@ -2,13 +2,13 @@
 title: Efficient Algorithms and Intractable Problems
 date: 2025-08-19 13:58:40
 tags:
-  - Berkeley
   - Study
+  - Berkeley
+  - Algorithms
   - CS170
 categories:
   - Study
   - Berkeley
-  - Notes
   - CS
 abbrlink: 51833
 cover: /images/170.png

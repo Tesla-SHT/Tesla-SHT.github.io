@@ -4,7 +4,7 @@ date: 2025-08-19 13:58:40
 cover: /images/Linux.jpg
 tags:
   - Linux
-  - Study
+  - Shell
   - Command
 categories:
   - Linux

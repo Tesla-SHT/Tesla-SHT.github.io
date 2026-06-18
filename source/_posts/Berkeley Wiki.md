@@ -3,7 +3,8 @@ title: Berkeley Wiki
 date: 2025-08-19 13:58:40
 tags:
   - Berkeley
-  - Study
+  - Wiki
+  - Campus
   - Food
   - Library
 categories:
@@ -89,6 +90,5 @@ The price is 17$ for a meal even if you have a student card, and the food is ord
 
 海岸拨开层叠的房屋，落日于晚霞中弥散；细雨浸湿了羽绒，狂风被秋叶吹乱；
 钟声从隐约中传来，山腰缭绕着白雾；铃铛摇曳在音乐中，节日在灯火里阑珊。
-
 
 
