@@ -21,7 +21,7 @@
 										<%- post.categories.data[0] ? post.categories.data[0].name : theme.author ? theme.author : 'Quiet' %>
 									</span>
 									<span class="post-tag">
-										<%- date(post.date, "YYYY-MM-DD" ) %>
+										<%- date(post.updated || post.date, "YYYY-MM-DD" ) %>
 									</span>
 								</div>
 								<div class="meat-type"></div>
@@ -52,7 +52,7 @@
 										</a>
 								</div>
 								<div class="info-data">
-									<%- date(post.date, "YYYY-MM-DD" ) %>
+									<%- date(post.updated || post.date, "YYYY-MM-DD" ) %>
 								</div>
 							</div>
 							<div class="meat-type"></div>

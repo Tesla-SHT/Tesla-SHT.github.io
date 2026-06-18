@@ -8,7 +8,7 @@
             <span><%- (post.title || "Untitled").replace(/[<>&"]/g,function(c){
                     return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];
                 }) %></span>
-            <time><%= post.date.format('MM-DD') %></time>
+            <time><%= (post.updated || post.date).format('MM-DD') %></time>
         </a>
         <% }) %>
         <% }) %>

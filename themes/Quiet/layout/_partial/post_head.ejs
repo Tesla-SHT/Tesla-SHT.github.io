@@ -35,7 +35,7 @@
                          <a href="../../../../<%- cat.path %>" target="_blank" ><%- cat.name %></a>
                     <% }) %>
                 </div>
-                <p><%- date(page.date, "YYYY-MM-DD HH:mm:ss") %></p>
+                <p><%- date(page.updated || page.date, "YYYY-MM-DD HH:mm:ss") %></p>
             </div>
         </div>
     </div>

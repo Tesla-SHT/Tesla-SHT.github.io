@@ -7,9 +7,10 @@
 
 <%
     let years = {};
-    page.posts.each(function (post) {
-        if(date(post.date, "YYYY") != date_cursor) {
-            date_cursor = date(post.date, "YYYY")
+    page.posts.sort('updated').reverse().each(function (post) {
+        const postTime = post.updated || post.date;
+        if(date(postTime, "YYYY") != date_cursor) {
+            date_cursor = date(postTime, "YYYY")
             if(years[date_cursor] === undefined){
                 years[date_cursor] = []
             }

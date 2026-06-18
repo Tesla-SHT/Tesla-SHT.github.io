@@ -6,8 +6,9 @@
         var years = {};
         var PageNum = 0;
         var PageYear = 0;
-        site.posts.sort('date').reverse().forEach(function(post){
-            var year = post.date.year()
+        site.posts.sort('updated').reverse().forEach(function(post){
+            var postTime = post.updated || post.date;
+            var year = postTime.year()
             if(years[year]===undefined){
                 years[year] = [];
                 PageYear += 1;
@@ -21,12 +22,13 @@
     <%- partial('_partial/header',{name:'categories'}) %>
     <%
         var years = {};
-        site.posts.sort('date').reverse().forEach(function(post){
+        site.posts.sort('updated').reverse().forEach(function(post){
             const categorys = post.categories;
             if(categorys.length < 1) return
             categorys.data.map((cat)=>{
                 if(page.category === cat.name){
-                    var year = post.date.year()
+                    var postTime = post.updated || post.date;
+                    var year = postTime.year()
                     if(years[year]===undefined){
                         years[year] = [];
                     }
@@ -50,6 +52,5 @@
         </div>
     </div>    
 </div>
-
 
 
