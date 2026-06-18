@@ -138,7 +138,7 @@ markdown:
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/Tesla-SHT/Tesla-SHT.github.io.git
+  repo: git@github.com:Tesla-SHT/Tesla-SHT.github.io.git
   # example, https://github.com/hexojs/hexojs.github.io
   branch: main
   token: $HEXO_DEPLOY_KEY
