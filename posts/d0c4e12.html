@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<script>
+	var _hmt = _hmt || [];
+	(function () {
+		var hm = document.createElement("script");
+		hm.src = "https://hm.baidu.com/hm.js?778413f3c91ae3853a75e27cdbc2cf91";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+
+
+<head>
+	
+<title>Docker Setup-Tesla's Blog</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+
+<meta name="keywords" content="Linux,Docker,ROS,Setup,">
+<meta name="description" content="">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+	
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b64ccbf090646c00052d5344987a6c91";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+		
+		
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Tesla</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/Tesla-SHT">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://picsum.photos/1920/1080?random')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/Linux">Linux</a></li>
+            
+            <li><a href="/tags/Docker">Docker</a></li>
+            
+            <li><a href="/tags/ROS">ROS</a></li>
+            
+            <li><a href="/tags/Setup">Setup</a></li>
+            
+            
+        </ul>
+        
+        <h1 style="font-size:3em;-webkit-text-stroke: 0.2px #000000;">Docker Setup</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">Tesla</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../../../categories/Linux/" target="_blank" >Linux</a>
+                    
+                         <a href="../../../../categories/Linux/System/" target="_blank" >System</a>
+                    
+                </div>
+                <p>2026-06-19 05:35:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+      <div id="post-toc">
+        <h2 class="post-toc-title">Content</h2>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Install Docker On Ubuntu 22.04</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Docker Daemon Proxy</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">ROS Jazzy Container</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Daily Commands</span></a></li></ol>
+      </div>
+    
+
+    <p>Docker setup notes split out from <a href="/posts/f7b0b433.html">Linux Lookup</a>.</p>
+<h1>Install Docker On Ubuntu 22.04</h1>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># remove old versions</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> remove <span class="token function">docker</span> docker-engine docker.io containerd runc
+
+<span class="token comment"># install docker</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> upgrade
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> docker.io
+
+<span class="token comment"># allow current user to run docker</span>
+<span class="token function">sudo</span> <span class="token function">usermod</span> <span class="token parameter variable">-aG</span> <span class="token function">docker</span> <span class="token string">"<span class="token environment constant">$USER</span>"</span>
+newgrp <span class="token function">docker</span>
+
+<span class="token comment"># verify</span>
+<span class="token function">docker</span> <span class="token parameter variable">--version</span>
+<span class="token function">docker</span> run <span class="token parameter variable">--rm</span> hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>Docker Daemon Proxy</h1>
+<p>If pulling images is blocked by proxy or network settings, configure a Docker daemon proxy.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /etc/systemd/system/docker.service.d
+
+<span class="token function">sudo</span> <span class="token function">tee</span> /etc/systemd/system/docker.service.d/http-proxy.conf <span class="token operator">></span>/dev/null <span class="token operator">&lt;&lt;</span><span class="token string">'EOF'
+[Service]
+Environment="HTTP_PROXY=http://proxy-host:port"
+Environment="HTTPS_PROXY=http://proxy-host:port"
+Environment="NO_PROXY=localhost,127.0.0.1,::1"
+EOF</span>
+
+<span class="token function">sudo</span> systemctl daemon-reload
+<span class="token function">sudo</span> systemctl restart <span class="token function">docker</span>
+<span class="token function">sudo</span> systemctl show <span class="token parameter variable">--property</span><span class="token operator">=</span>Environment <span class="token function">docker</span>
+
+<span class="token comment"># verify again</span>
+<span class="token function">docker</span> run <span class="token parameter variable">--rm</span> hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>ROS Jazzy Container</h1>
+<p>Pull the image:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull osrf/ros:jazzy-desktop-full<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Create the project container:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">--name</span> mtc_jazzy <span class="token punctuation">\</span>
+  <span class="token parameter variable">--network</span> <span class="token function">host</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--ipc</span> <span class="token function">host</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-v</span> <span class="token string">"<span class="token environment constant">$HOME</span>/Robotic:/home/haotian/Robotic"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-w</span> /home/haotian/Robotic <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$http_proxy</span>"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$https_proxy</span>"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">HTTP_PROXY</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$HTTP_PROXY</span>"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">HTTPS_PROXY</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$HTTPS_PROXY</span>"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">NO_PROXY</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$NO_PROXY</span>"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">no_proxy</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$no_proxy</span>"</span> <span class="token punctuation">\</span>
+  osrf/ros:jazzy-desktop-full <span class="token punctuation">\</span>
+  <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Enter the same container later:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> start <span class="token parameter variable">-ai</span> mtc_jazzy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>If the container is already running, open another shell inside it:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> mtc_jazzy <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>If group permissions have not refreshed in the current shell:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">newgrp <span class="token function">docker</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1>Daily Commands</h1>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token function">ps</span>                 <span class="token comment"># running containers</span>
+<span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span>              <span class="token comment"># all containers</span>
+<span class="token function">docker</span> stop mtc_jazzy     <span class="token comment"># stop container</span>
+<span class="token function">docker</span> <span class="token function">rm</span> mtc_jazzy       <span class="token comment"># remove container, not host code</span>
+<span class="token function">docker</span> images             <span class="token comment"># local images</span>
+<span class="token function">docker</span> rmi <span class="token operator">&lt;</span>image<span class="token operator">></span>        <span class="token comment"># remove image</span>
+<span class="token function">docker</span> run <span class="token parameter variable">--rm</span> <span class="token parameter variable">-it</span> <span class="token operator">&lt;</span>IMAGE_ID<span class="token operator">></span> /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+
+    
+    <a href="/posts/e3a7263f.html">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>Event3R</p>
+        </div>
+    </a>
+    
+</div>
+
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2026 By Tesla <!--Here to change foot-->
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/Tesla-SHT">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+<!-- Baidu Analytics -->
+<script defer>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4b5fe1472f22fadsfs";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23liKailJtkmjTAZy6","clientSecret":"9dfc4b9fe1daea1961070e6a9ea76f3036b0df9c","repo":"Blog_Image","owner":"Tesla-SHT","admin":"Tesla-SHT"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+
+</body>
+
+</html>

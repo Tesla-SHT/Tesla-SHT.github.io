@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html>
+<script>
+	var _hmt = _hmt || [];
+	(function () {
+		var hm = document.createElement("script");
+		hm.src = "https://hm.baidu.com/hm.js?778413f3c91ae3853a75e27cdbc2cf91";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+
+
+<head>
+	
+<title>Linux Lookup-Tesla's Blog</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+
+<meta name="keywords" content="Linux,Shell,Command,Git,CUDA,Python,">
+<meta name="description" content="">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+	
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b64ccbf090646c00052d5344987a6c91";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+		
+		
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Tesla</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/Tesla-SHT">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://picsum.photos/1920/1080?random')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/Linux">Linux</a></li>
+            
+            <li><a href="/tags/Shell">Shell</a></li>
+            
+            <li><a href="/tags/Command">Command</a></li>
+            
+            <li><a href="/tags/Git">Git</a></li>
+            
+            <li><a href="/tags/CUDA">CUDA</a></li>
+            
+            <li><a href="/tags/Python">Python</a></li>
+            
+            
+        </ul>
+        
+        <h1 style="font-size:3em;-webkit-text-stroke: 0.2px #000000;">Linux Lookup</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">Tesla</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../../../categories/Linux/" target="_blank" >Linux</a>
+                    
+                         <a href="../../../../categories/Linux/System/" target="_blank" >System</a>
+                    
+                </div>
+                <p>2026-06-19 05:35:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+      <div id="post-toc">
+        <h2 class="post-toc-title">Content</h2>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Links</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Shell Basics</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Commands"><span class="toc-text">Basic Commands</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-Tips"><span class="toc-text">Shell Tips</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nano"><span class="toc-text">Nano</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-Scripting"><span class="toc-text">Shell Scripting</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Installation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Conda"><span class="toc-text">Conda</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PyTorch-Torchvision-Python"><span class="toc-text">PyTorch, Torchvision, Python</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Venv"><span class="toc-text">Venv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AppImage"><span class="toc-text">AppImage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Desktop-Shortcut"><span class="toc-text">Desktop Shortcut</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#App-Notes"><span class="toc-text">App Notes</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">System &amp; Terminal</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unpack-Files"><span class="toc-text">Unpack Files</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Download-From-URL"><span class="toc-text">Download From URL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-Uninstall-Apps"><span class="toc-text">Install &#x2F; Uninstall Apps</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Terminal Sessions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nohup"><span class="toc-text">Nohup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tmux"><span class="toc-text">Tmux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Zellij"><span class="toc-text">Zellij</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Python</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Docker</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Usage"><span class="toc-text">Basic Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Failure-With-Git-Connection"><span class="toc-text">Failure With Git Connection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set-Username-And-Email"><span class="toc-text">Set Username And Email</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remote-Local-Branch"><span class="toc-text">Remote &amp; Local Branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Checkout-Switch-Restore"><span class="toc-text">Checkout, Switch, Restore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Merge-One-Branch-To-Another"><span class="toc-text">Merge One Branch To Another</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Modify-The-Latest-Commit"><span class="toc-text">Modify The Latest Commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Submodule-Tracking"><span class="toc-text">Submodule Tracking</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">CUDA</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Assign-Process-To-GPU"><span class="toc-text">Assign Process To GPU</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">VSCode</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-Interpreter"><span class="toc-text">Python Interpreter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shortcuts"><span class="toc-text">Shortcuts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Regular-Expression-Table"><span class="toc-text">Regular Expression Table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Add-SiliconFlow-Model"><span class="toc-text">Add SiliconFlow Model</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Desktop Environment</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Xfce"><span class="toc-text">Xfce</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Errors</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Some-Text-Is-Missing-In-GNOME"><span class="toc-text">Some Text Is Missing In GNOME</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dpkg-error-dpkg-frontend-lock-is-locked-by-another-process"><span class="toc-text">dpkg: error: dpkg frontend lock is locked by another process</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <p>This page is a personal Linux command lookup sheet. It now also includes the older <a href="/posts/15691.html">Linux</a> blog notes.</p>
+<h1>Links</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/HuangJianxjtu/linux_learning/blob/master/ubuntu20_setup_notes.md">Ubuntu 20.04 setup notes</a></li>
+<li><a href="/posts/44303.html">Vim Handbook</a></li>
+<li><a href="/posts/d0c4e12.html">Docker Setup</a></li>
+</ul>
+<h1>Shell Basics</h1>
+<h2 id="Basic-Commands">Basic Commands</h2>
+<ul>
+<li><code>man &lt;command&gt;</code>: show the manual page for a command.</li>
+<li><code>mv &lt;src&gt; &lt;dst&gt;</code>: move a file or directory.</li>
+<li><code>rm &lt;path&gt;</code>: remove a file or directory.</li>
+<li><code>cat &lt;file&gt;</code>: print file content.</li>
+<li><code>fg</code>: resume a paused process in the foreground.</li>
+<li><code>bg</code>: continue a paused process in the background.</li>
+<li><code>jobs</code>: list jobs started from the current shell.</li>
+<li><code>touch &lt;file&gt;</code>: create an empty file or update its timestamp.</li>
+<li><code>chmod +x &lt;file&gt;</code>: make a file executable.</li>
+</ul>
+<h2 id="Shell-Tips">Shell Tips</h2>
+<ul>
+<li>Use <code>*</code> to match multiple characters and <code>?</code> to match one character.</li>
+<li><code>Ctrl+D</code>: exit the shell.</li>
+<li><code>Ctrl+Z</code>: suspend the current foreground process.</li>
+<li><code>echo &quot;content&quot; &gt; file</code>: overwrite a file.</li>
+<li><code>echo &quot;content&quot; &gt;&gt; file</code>: append to a file.</li>
+<li><code>grep &quot;pattern&quot; file</code>: search for a pattern.</li>
+<li><code>sed -i &quot;/pattern/d&quot; file</code>: delete matching lines in place.</li>
+</ul>
+<h2 id="Nano">Nano</h2>
+<ul>
+<li><code>Ctrl+X</code>: exit.</li>
+<li><code>Ctrl+G</code>: open help.</li>
+<li><code>Ctrl+K</code>: cut a line.</li>
+<li><code>Ctrl+U</code>: paste a line.</li>
+<li><code>Ctrl+W</code>: search.</li>
+<li><code>Ctrl+Y</code> / <code>Ctrl+V</code>: previous / next page.</li>
+<li><code>Ctrl+A</code> / <code>Ctrl+E</code>: line start / line end.</li>
+</ul>
+<h2 id="Shell-Scripting">Shell Scripting</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># variables</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$VAR</span>"</span>
+<span class="token function">expr</span> <span class="token string">"<span class="token variable">$VAR1</span>"</span> + <span class="token string">"<span class="token variable">$VAR2</span>"</span>
+<span class="token builtin class-name">read</span> VAR
+
+<span class="token comment"># conditional</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> condition <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"true"</span>
+<span class="token keyword">else</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"false"</span>
+<span class="token keyword">fi</span>
+
+<span class="token comment"># loop</span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">VAR</span> <span class="token keyword">in</span> <span class="token variable">$LIST</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$VAR</span>"</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>Installation</h1>
+<h2 id="Conda">Conda</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda create <span class="token parameter variable">-n</span> myenv <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.8</span>      <span class="token comment"># create a new env</span>
+conda remove <span class="token parameter variable">-n</span> myenv <span class="token parameter variable">--all</span>           <span class="token comment"># delete the whole env</span>
+conda create <span class="token parameter variable">-n</span> new_env <span class="token parameter variable">--clone</span> old_env
+conda <span class="token function">env</span> update <span class="token parameter variable">-f</span> requirement.yml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="PyTorch-Torchvision-Python">PyTorch, Torchvision, Python</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/images/LinuxLookup/image.png" style="width:100%;margin:auto;display:block"/></td>
+<td><img src="/images/LinuxLookup/image1.png" style="width:60%;margin:auto;display:block"/></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>NVIDIA driver: open <code>Software &amp; Updates</code>, then use the <code>Additional Drivers</code> tab.</li>
+<li>Install torch / torchvision / torchaudio with a specific CUDA wheel index:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu128<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Install a local wheel:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> package.whl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Temporary PyPI mirror:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> package_name <span class="token parameter variable">-i</span> https://pypi.tuna.tsinghua.edu.cn/simple<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Global PyPI mirror:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip config <span class="token builtin class-name">set</span> global.index-url https://mirrors.cloud.tencent.com/pypi/simple<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Venv">Venv</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 <span class="token parameter variable">-m</span> venv venv
+<span class="token builtin class-name">source</span> venv/bin/activate
+deactivate<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="AppImage">AppImage</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> a+x *.AppImage
+./*.AppImage<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="Desktop-Shortcut">Desktop Shortcut</h2>
+<p>Create a <code>.desktop</code> file under <code>~/.local/share/applications/</code>:</p>
+<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Desktop Entry</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">Name</span><span class="token punctuation">=</span><span class="token value attr-value">Another Redis Desktop</span>
+<span class="token key attr-name">Comment</span><span class="token punctuation">=</span><span class="token value attr-value">Another Redis Desktop</span>
+<span class="token key attr-name">Exec</span><span class="token punctuation">=</span><span class="token value attr-value">/opt/Another_Redis_Desktop/Another-Redis-Desktop-Manager.1.5.6.AppImage</span>
+<span class="token key attr-name">Icon</span><span class="token punctuation">=</span><span class="token value attr-value">/opt/Another_Redis_Desktop/ard.png</span>
+<span class="token key attr-name">Terminal</span><span class="token punctuation">=</span><span class="token value attr-value">false</span>
+<span class="token key attr-name">Type</span><span class="token punctuation">=</span><span class="token value attr-value">Application</span>
+<span class="token key attr-name">Categories</span><span class="token punctuation">=</span><span class="token value attr-value">Developer;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="App-Notes">App Notes</h2>
+<ul>
+<li>Zotero: run <code>./set_launcher_icon</code>, then link the generated desktop file:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ln</span> <span class="token parameter variable">-s</span> /path/to/zotero/zotero.desktop ~/.local/share/applications/zotero.desktop<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Zotero WebDAV can use Jianguoyun: <code>https://dav.jianguoyun.com/dav/</code>.</li>
+<li>QQ Music sandbox workaround:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">qqmusic --no-sandbox<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1>System &amp; Terminal</h1>
+<ul>
+<li>Supervise GPU usage:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">watch</span> <span class="token parameter variable">-n</span> <span class="token number">10</span> nvidia-smi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Look for proxy:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">env</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-i</span> proxy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Check system architecture:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">uname</span> <span class="token parameter variable">-m</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Install / uninstall a <code>.deb</code> package:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> dpkg <span class="token parameter variable">-i</span> package_name.deb
+<span class="token function">sudo</span> dpkg <span class="token parameter variable">-r</span> package_name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>Show Python interpreter path:</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
+path <span class="token operator">=</span> sys<span class="token punctuation">.</span>executable
+<span class="token keyword">print</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>Set proxy in <code>~/.bashrc</code> or <code>~/.zshrc</code>, then <code>source ~/.bashrc</code> or <code>source ~/.zshrc</code>:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>http://proxy-host:port
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://proxy-host:port<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="Unpack-Files">Unpack Files</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> event.tar.gz.part-* <span class="token operator">></span> event.tar.gz
+<span class="token function">tar</span> <span class="token parameter variable">-xvf</span> archive.tar
+<span class="token function">tar</span> <span class="token parameter variable">-xzvf</span> archive.tar.gz
+<span class="token function">tar</span> <span class="token parameter variable">-xjvf</span> archive.tar.bz2
+<span class="token function">unzip</span> archive.zip <span class="token parameter variable">-d</span> /path/to/directory
+<span class="token function">unrar</span> e archive.rar<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Download-From-URL">Download From URL</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">aria2c <span class="token parameter variable">-s</span> <span class="token number">10</span> <span class="token parameter variable">-x</span> <span class="token number">10</span> <span class="token string">"URL"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>-s</code> is the split count, and <code>-x</code> is the number of connections per server.</p>
+<h2 id="Install-Uninstall-Apps">Install / Uninstall Apps</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> remove <span class="token operator">&lt;</span>package_name<span class="token operator">></span>  <span class="token comment"># remove app only</span>
+<span class="token function">sudo</span> <span class="token function">apt</span> purge <span class="token operator">&lt;</span>package_name<span class="token operator">></span>   <span class="token comment"># remove app and configuration files</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1>Terminal Sessions</h1>
+<h2 id="Nohup">Nohup</h2>
+<p>Run a script in the background:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> /root/runoob.sh <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>The output is written to <code>nohup.out</code> by default.</p>
+<p>Find and kill the process:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"runoob.sh"</span>
+<span class="token function">kill</span> <span class="token parameter variable">-9</span> <span class="token operator">&lt;</span>PID<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="Tmux">Tmux</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.tmux.conf
+tmux source-file ~/.tmux.conf
+tmux new <span class="token parameter variable">-t</span> session_name
+tmux <span class="token function">ls</span>
+tmux kill-window <span class="token parameter variable">-t</span> session_name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>Detach window: <code>Ctrl+B</code>, then <code>D</code>.</li>
+</ul>
+<h2 id="Zellij">Zellij</h2>
+<ul>
+<li><code>ctrl-p + d</code>: create a pane below.</li>
+<li><code>ctrl-p + r</code>: create a pane on the right.</li>
+<li><code>ctrl-p + x</code>: close current pane.</li>
+<li><code>ctrl-q</code>: quit Zellij.</li>
+</ul>
+<h1>Python</h1>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python <span class="token parameter variable">-c</span> <span class="token string">"print('Hello from command line')"</span>
+python <span class="token parameter variable">-c</span> <span class="token string">"import torch; print(torch.cuda.is_available()); print(torch.__version__)"</span>
+python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> package_name
+python main.py <span class="token parameter variable">-h</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>Docker</h1>
+<p>Docker installation and ROS container setup moved to <a href="/posts/d0c4e12.html">Docker Setup</a>.</p>
+<p>Common commands:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> images
+<span class="token function">docker</span> rmi <span class="token operator">&lt;</span>REPOSITORY:TAG<span class="token operator">></span>
+<span class="token function">docker</span> run <span class="token parameter variable">--rm</span> <span class="token parameter variable">-it</span> <span class="token operator">&lt;</span>IMAGE_ID<span class="token operator">></span> /bin/bash
+<span class="token function">docker</span> <span class="token function">ps</span>
+<span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>Git</h1>
+<h2 id="Basic-Usage">Basic Usage</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> status
+<span class="token function">git</span> <span class="token function">add</span> filename.txt
+<span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"commit message"</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"commit message"</span>
+<span class="token function">git</span> push <span class="token parameter variable">-u</span> origin new_branch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Failure-With-Git-Connection">Failure With Git Connection</h2>
+<p>If port 22 is blocked, use SSH over port 443:</p>
+<pre class="line-numbers language-plain" data-language="plain"><div class="caption"><span>text</span></div><code class="language-plain">Host github.com
+    Hostname ssh.github.com
+    Port 443
+    User git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Put the block in <code>~/.ssh/config</code>.</p>
+<h2 id="Set-Username-And-Email">Set Username And Email</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name <span class="token string">"Tesla-SHT"</span>
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email <span class="token string">"you@example.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>For private repositories, use a username and PAT instead of a password.</p>
+<h2 id="Remote-Local-Branch">Remote &amp; Local Branch</h2>
+<ul>
+<li>Pull a remote branch to local:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> checkout <span class="token parameter variable">-b</span> branch origin/branch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Delete a local branch:</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> checkout another_branch
+<span class="token function">git</span> branch <span class="token parameter variable">-D</span> branch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="Checkout-Switch-Restore">Checkout, Switch, Restore</h2>
+<p><code>checkout</code> can both move branches and restore files. <code>switch</code> and <code>restore</code> split those ideas more clearly.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># checkout</span>
+<span class="token function">git</span> checkout develop
+<span class="token function">git</span> checkout <span class="token parameter variable">-b</span> new-feature
+<span class="token function">git</span> checkout <span class="token operator">&lt;</span>commit-hash<span class="token operator">></span>
+<span class="token function">git</span> checkout -- a.txt
+<span class="token function">git</span> checkout HEAD -- a.txt
+
+<span class="token comment"># switch</span>
+<span class="token function">git</span> switch develop
+<span class="token function">git</span> switch <span class="token parameter variable">-c</span> new-feature
+<span class="token function">git</span> switch -
+
+<span class="token comment"># restore</span>
+<span class="token function">git</span> restore a.txt
+<span class="token function">git</span> restore <span class="token parameter variable">--staged</span> a.txt
+<span class="token function">git</span> restore <span class="token parameter variable">--source</span><span class="token operator">=</span>HEAD a.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Merge-One-Branch-To-Another">Merge One Branch To Another</h2>
+<ul>
+<li><code>git pull --rebase</code>: fetch remote commits and replay local commits after them.</li>
+<li><code>git push</code>: push current branch.</li>
+<li><code>git checkout dev</code>: switch to <code>dev</code>.</li>
+<li><code>git merge main</code>: merge <code>main</code> into <code>dev</code>.</li>
+</ul>
+<h2 id="Modify-The-Latest-Commit">Modify The Latest Commit</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> reset <span class="token parameter variable">--soft</span> HEAD^
+<span class="token function">git</span> reset <span class="token parameter variable">--hard</span> HEAD~1
+<span class="token function">git</span> commit <span class="token parameter variable">--amend</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Use <code>git reset --hard</code> only when you intentionally want to discard local changes.</p>
+<h2 id="Submodule-Tracking">Submodule Tracking</h2>
+<p>Sometimes a submodule may not be tracked as expected.</p>
+<ol>
+<li>Remove the original tracking:</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">rm</span> <span class="token parameter variable">--cached</span> <span class="token operator">&lt;</span>file-or-dir<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="2">
+<li>Delete the <code>.git</code> file in the submodule and delete the related file under the root <code>.git</code> directory if it exists.</li>
+<li><code>git add</code> the file again.</li>
+</ol>
+<h1>CUDA</h1>
+<h2 id="Assign-Process-To-GPU">Assign Process To GPU</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">CUDA_VISIBLE_DEVICES</span><span class="token operator">=</span><span class="token number">0</span> python main.py
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">CUDA_VISIBLE_DEVICES</span><span class="token operator">=</span><span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"CUDA_VISIBLE_DEVICES"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"0"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
+
+torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>is_available<span class="token punctuation">(</span><span class="token punctuation">)</span>
+torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>device_count<span class="token punctuation">(</span><span class="token punctuation">)</span>
+torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>get_device_name<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>current_device<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>VSCode</h1>
+<h2 id="Python-Interpreter">Python Interpreter</h2>
+<ul>
+<li><code>Ctrl+Shift+P</code>: open command palette.</li>
+<li>Choose <code>Python: Select Interpreter</code>.</li>
+</ul>
+<h2 id="Shortcuts">Shortcuts</h2>
+<ul>
+<li><code>Ctrl+K Ctrl+S</code>: open keyboard shortcuts.</li>
+<li><code>Ctrl+Shift+F</code>: global search.</li>
+<li><code>Ctrl+P</code>: quick open.</li>
+<li><code>Ctrl+Shift+G</code>: source control.</li>
+<li><code>Ctrl+Shift+D</code>: debug.</li>
+<li><code>Ctrl+K M</code>: select language mode.</li>
+<li><code>Ctrl+Alt+N</code>: run code with Code Runner.</li>
+<li><code>Alt+Z</code>: toggle word wrap.</li>
+<li><code>Ctrl+Shift+P</code>: command palette.</li>
+</ul>
+<h2 id="Regular-Expression-Table">Regular Expression Table</h2>
+<table>
+<thead>
+<tr>
+<th>Basic Syntax</th>
+<th>Quantifiers</th>
+<th>Position</th>
+<th>Group</th>
+<th>Common Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Any digit: <code>\d</code></td>
+<td>Zero or more: <code>*</code></td>
+<td>Start of line: <code>^</code></td>
+<td><code>(abc)</code> group, use <code>$1</code> in replace</td>
+<td>Empty line: <code>^\s*$</code></td>
+</tr>
+<tr>
+<td>Word character: <code>\w</code></td>
+<td>One or more: <code>+</code></td>
+<td>End of line: <code>$</code></td>
+<td><code>[abc]</code> matches one of <code>a</code>, <code>b</code>, <code>c</code></td>
+<td>Comments: <code>//.*</code></td>
+</tr>
+<tr>
+<td>Whitespace: <code>\s</code></td>
+<td>Zero or one: <code>?</code></td>
+<td>Word boundary: <code>\b</code></td>
+<td><code>a|b</code> matches <code>a</code> or <code>b</code></td>
+<td>Quoted text: <code>&quot;[^&quot;]*&quot;</code></td>
+</tr>
+<tr>
+<td>Any character: <code>.</code></td>
+<td>Exact count: <code>&#123;n&#125;</code></td>
+<td></td>
+<td></td>
+<td>Escape regex metacharacters such as dot, star, plus, question mark, brackets, pipe, and backslash.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Add-SiliconFlow-Model">Add SiliconFlow Model</h2>
+<ol>
+<li>Install an OAI-compatible extension.</li>
+<li>Set the OAI base URL to <code>https://api.siliconflow.cn/v1</code>.</li>
+<li>Add an OAI model in Copilot or Cline.</li>
+</ol>
+<h1>Desktop Environment</h1>
+<h2 id="Xfce">Xfce</h2>
+<p>If <code>X server already running on display :0</code> appears, run:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">exec</span> startxfce4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Modify lockscreen time:</p>
+<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">Section &quot;ServerFlags&quot;
+    Option &quot;BlankTime&quot; &quot;0&quot;
+    Option &quot;StandbyTime&quot; &quot;0&quot;
+    Option &quot;SuspendTime&quot; &quot;0&quot;
+    Option &quot;OffTime&quot; &quot;0&quot;
+EndSection<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>Errors</h1>
+<h2 id="Some-Text-Is-Missing-In-GNOME">Some Text Is Missing In GNOME</h2>
+<p>Restart GNOME Shell:</p>
+<ol>
+<li>Press <code>Alt+F2</code>.</li>
+<li>Type <code>r</code>.</li>
+<li>Press <code>Enter</code>.</li>
+</ol>
+<h2 id="dpkg-error-dpkg-frontend-lock-is-locked-by-another-process"><code>dpkg: error: dpkg frontend lock is locked by another process</code></h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-e</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token function">apt</span>
+<span class="token function">sudo</span> <span class="token function">kill</span> <span class="token operator">&lt;</span>PID<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/posts/67f0b1ee.html">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>ED-SLAM</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/posts/a4caa571.html">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>Register Token</p>
+        </div>
+    </a>
+    
+</div>
+
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2026 By Tesla <!--Here to change foot-->
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/Tesla-SHT">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+<!-- Baidu Analytics -->
+<script defer>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4b5fe1472f22fadsfs";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23liKailJtkmjTAZy6","clientSecret":"9dfc4b9fe1daea1961070e6a9ea76f3036b0df9c","repo":"Blog_Image","owner":"Tesla-SHT","admin":"Tesla-SHT"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+
+</body>
+
+</html>
