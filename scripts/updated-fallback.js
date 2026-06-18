@@ -58,17 +58,7 @@ function normalizePost(raw) {
   const match = normalized.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!match) return normalized.trim();
 
-  const frontMatter = yaml.load(match[1]) || {};
-  delete frontMatter.tags;
-  delete frontMatter.categories;
-  delete frontMatter.updated;
-
-  const frontMatterText = yaml.dump(frontMatter, {
-    lineWidth: -1,
-    sortKeys: true
-  }).trim();
-
-  return `---\n${frontMatterText}\n---\n${match[2].trim()}`;
+  return match[2].trim();
 }
 
 function frontMatterUpdated(data) {
@@ -79,7 +69,7 @@ function frontMatterUpdated(data) {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n?/);
   if (!match) return null;
 
-  const frontMatter = yaml.load(match[1]) || {};
+  const frontMatter = yaml.load(match[1], { schema: yaml.FAILSAFE_SCHEMA }) || {};
   return asMoment(frontMatter.updated);
 }
 
