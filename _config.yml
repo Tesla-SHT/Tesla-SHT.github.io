@@ -57,12 +57,12 @@ prismjs:
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
-# order_by: Posts order. (Order by date descending by default)
+# order_by: Posts order. Use updated time so refreshed notes return to the top.
 #Theme Configurations
 index_generator:
   path: ''
   per_page: 9
-  order_by: -date
+  order_by: -updated
 ## ���滹�и� 10 �� �޸�Ϊ 9
 
 ## ��ҳ���²��� Ĭ�� 'card' ��ѡ�� 'block-card'
@@ -84,7 +84,8 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+## Keep this empty and use explicit front-matter `updated` for stable update-based sorting.
+updated_option: 'empty'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
@@ -142,4 +143,3 @@ deploy:
   branch: main
   token: $HEXO_DEPLOY_KEY
   message: Init ED-SLAM
-

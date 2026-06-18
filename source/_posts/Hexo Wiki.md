@@ -7,7 +7,6 @@ tags:
 - Hexo
 categories:
 - Wiki
-top: true
 toc: true
 
 ---
