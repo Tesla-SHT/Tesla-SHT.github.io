@@ -142,4 +142,4 @@ deploy:
   # example, https://github.com/hexojs/hexojs.github.io
   branch: main
   token: $HEXO_DEPLOY_KEY
-  message: Init ED-SLAM
+  message: Refresh Linux lookup, taxonomy, and blog metadata
