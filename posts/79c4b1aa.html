@@ -13,7 +13,7 @@
 
 <head>
 	
-<title>Docker Setup-Tesla's Blog</title>
+<title>BeyondMimic-Tesla's Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,7 +25,7 @@
 
 
 
-<meta name="keywords" content="Linux,Docker,ROS,Setup,">
+<meta name="keywords" content="Paper,Robotics,Humanoid,Motion Imitation,Diffusion Policy,Whole-Body Control,">
 <meta name="description" content="">
 
 
@@ -309,18 +309,22 @@
         <ul class="post-header-tag">
             
             
-            <li><a href="/tags/Linux">Linux</a></li>
+            <li><a href="/tags/Paper">Paper</a></li>
             
-            <li><a href="/tags/Docker">Docker</a></li>
+            <li><a href="/tags/Robotics">Robotics</a></li>
             
-            <li><a href="/tags/ROS">ROS</a></li>
+            <li><a href="/tags/Humanoid">Humanoid</a></li>
             
-            <li><a href="/tags/Setup">Setup</a></li>
+            <li><a href="/tags/Motion Imitation">Motion Imitation</a></li>
+            
+            <li><a href="/tags/Diffusion Policy">Diffusion Policy</a></li>
+            
+            <li><a href="/tags/Whole-Body Control">Whole-Body Control</a></li>
             
             
         </ul>
         
-        <h1 style="font-size:3em;-webkit-text-stroke: 0.2px #000000;">Docker Setup</h1>
+        <h1 style="font-size:3em;-webkit-text-stroke: 0.2px #000000;">BeyondMimic</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -334,12 +338,14 @@
                 <span class="post-header-info-author-text"> <a href="../../about">Tesla</a></span>
                 <div class="post-header-info-author-categories">
                     
-                         <a href="../../../../categories/Linux/" target="_blank" >Linux</a>
+                         <a href="../../../../categories/Paper/" target="_blank" >Paper</a>
                     
-                         <a href="../../../../categories/Linux/System/" target="_blank" >System</a>
+                         <a href="../../../../categories/Paper/Robotics/" target="_blank" >Robotics</a>
+                    
+                         <a href="../../../../categories/Paper/Robotics/Humanoid-Control/" target="_blank" >Humanoid Control</a>
                     
                 </div>
-                <p>2026-06-18 21:46:13</p>
+                <p>2026-06-18 22:44:00</p>
             </div>
         </div>
     </div>
@@ -351,75 +357,72 @@
     
       <div id="post-toc">
         <h2 class="post-toc-title">Content</h2>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Install Docker On Ubuntu 22.04</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Docker Daemon Proxy</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">ROS Jazzy Container</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Daily Commands</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">BeyondMimic</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">One Sentence</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">What Problem It Solves</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Core Idea</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Build-strong-motion-tracking-skills"><span class="toc-text">1. Build strong motion tracking skills</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Distill-skills-into-a-guided-diffusion-policy"><span class="toc-text">2. Distill skills into a guided diffusion policy</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Important Innovation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Why It Matters</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Relation To DeepMimic And OmniRetarget</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Limitation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Takeaway</span></a></li></ol>
       </div>
     
 
-    <p>Docker setup notes split out from <a href="/posts/f7b0b433.html">Linux Lookup</a>.</p>
-<h1>Install Docker On Ubuntu 22.04</h1>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># remove old versions</span>
-<span class="token function">sudo</span> <span class="token function">apt-get</span> remove <span class="token function">docker</span> docker-engine docker.io containerd runc
-
-<span class="token comment"># install docker</span>
-<span class="token function">sudo</span> <span class="token function">apt-get</span> update
-<span class="token function">sudo</span> <span class="token function">apt-get</span> upgrade
-<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> docker.io
-
-<span class="token comment"># allow current user to run docker</span>
-<span class="token function">sudo</span> <span class="token function">usermod</span> <span class="token parameter variable">-aG</span> <span class="token function">docker</span> <span class="token string">"<span class="token environment constant">$USER</span>"</span>
-newgrp <span class="token function">docker</span>
-
-<span class="token comment"># verify</span>
-<span class="token function">docker</span> <span class="token parameter variable">--version</span>
-<span class="token function">docker</span> run <span class="token parameter variable">--rm</span> hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>Docker Daemon Proxy</h1>
-<p>If pulling images is blocked by proxy or network settings, configure a Docker daemon proxy.</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /etc/systemd/system/docker.service.d
-
-<span class="token function">sudo</span> <span class="token function">tee</span> /etc/systemd/system/docker.service.d/http-proxy.conf <span class="token operator">></span>/dev/null <span class="token operator">&lt;&lt;</span><span class="token string">'EOF'
-[Service]
-Environment="HTTP_PROXY=http://proxy-host:port"
-Environment="HTTPS_PROXY=http://proxy-host:port"
-Environment="NO_PROXY=localhost,127.0.0.1,::1"
-EOF</span>
-
-<span class="token function">sudo</span> systemctl daemon-reload
-<span class="token function">sudo</span> systemctl restart <span class="token function">docker</span>
-<span class="token function">sudo</span> systemctl show <span class="token parameter variable">--property</span><span class="token operator">=</span>Environment <span class="token function">docker</span>
-
-<span class="token comment"># verify again</span>
-<span class="token function">docker</span> run <span class="token parameter variable">--rm</span> hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>ROS Jazzy Container</h1>
-<p>Pull the image:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull osrf/ros:jazzy-desktop-full<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>Create the project container:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">--name</span> mtc_jazzy <span class="token punctuation">\</span>
-  <span class="token parameter variable">--network</span> <span class="token function">host</span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">--ipc</span> <span class="token function">host</span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">-v</span> <span class="token string">"<span class="token environment constant">$HOME</span>/Robotic:/home/haotian/Robotic"</span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">-w</span> /home/haotian/Robotic <span class="token punctuation">\</span>
-  <span class="token parameter variable">-e</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$http_proxy</span>"</span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">-e</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$https_proxy</span>"</span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">-e</span> <span class="token assign-left variable">HTTP_PROXY</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$HTTP_PROXY</span>"</span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">-e</span> <span class="token assign-left variable">HTTPS_PROXY</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$HTTPS_PROXY</span>"</span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">-e</span> <span class="token assign-left variable">NO_PROXY</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$NO_PROXY</span>"</span> <span class="token punctuation">\</span>
-  <span class="token parameter variable">-e</span> <span class="token assign-left variable">no_proxy</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$no_proxy</span>"</span> <span class="token punctuation">\</span>
-  osrf/ros:jazzy-desktop-full <span class="token punctuation">\</span>
-  <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Enter the same container later:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> start <span class="token parameter variable">-ai</span> mtc_jazzy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>If the container is already running, open another shell inside it:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> mtc_jazzy <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>If group permissions have not refreshed in the current shell:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">newgrp <span class="token function">docker</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1>Daily Commands</h1>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token function">ps</span>                 <span class="token comment"># running containers</span>
-<span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span>              <span class="token comment"># all containers</span>
-<span class="token function">docker</span> stop mtc_jazzy     <span class="token comment"># stop container</span>
-<span class="token function">docker</span> <span class="token function">rm</span> mtc_jazzy       <span class="token comment"># remove container, not host code</span>
-<span class="token function">docker</span> images             <span class="token comment"># local images</span>
-<span class="token function">docker</span> rmi <span class="token operator">&lt;</span>image<span class="token operator">></span>        <span class="token comment"># remove image</span>
-<span class="token function">docker</span> run <span class="token parameter variable">--rm</span> <span class="token parameter variable">-it</span> <span class="token operator">&lt;</span>IMAGE_ID<span class="token operator">></span> /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <h1>BeyondMimic</h1>
+<p>Type: Paper<br>
+Topic: From motion tracking to versatile humanoid control with guided diffusion<br>
+Links: <a target="_blank" rel="noopener" href="https://beyondmimic.github.io/">Project</a> / <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2508.08241">arXiv</a></p>
+<h1>One Sentence</h1>
+<p>BeyondMimic first learns strong humanoid motion tracking from human motions, then distills those motion skills into a diffusion policy that can be guided at test time to solve new tasks.</p>
+<h1>What Problem It Solves</h1>
+<p>Motion imitation is useful, but plain imitation has a ceiling:</p>
+<ul>
+<li>it can copy reference clips</li>
+<li>but downstream tasks often need new motion combinations</li>
+<li>and robots must react to goals, obstacles, joystick commands, or waypoints</li>
+</ul>
+<p>So the question is:</p>
+<blockquote>
+<p>How do we move from tracking motion clips to controlling a humanoid flexibly?</p>
+</blockquote>
+<h1>Core Idea</h1>
+<p>BeyondMimic separates the problem into two levels.</p>
+<h2 id="1-Build-strong-motion-tracking-skills">1. Build strong motion tracking skills</h2>
+<p>The system first learns to track challenging human motions on humanoid hardware, including highly dynamic skills such as sprinting, jumping spins, and cartwheels.</p>
+<p>This stage is about making motion data physically executable.</p>
+<h2 id="2-Distill-skills-into-a-guided-diffusion-policy">2. Distill skills into a guided diffusion policy</h2>
+<p>Instead of only replaying or tracking existing clips, the learned motion primitives are distilled into a unified diffusion policy.</p>
+<p>At test time, simple cost functions can guide the diffusion process toward a task goal.</p>
+<p>Examples include:</p>
+<ul>
+<li>waypoint navigation</li>
+<li>joystick teleoperation</li>
+<li>obstacle avoidance</li>
+<li>motion synthesis beyond the exact training clips</li>
+</ul>
+<h1>Important Innovation</h1>
+<p>The important jump is from imitation to composition.</p>
+<p>DeepMimic-style methods show how to learn a skill from a reference. BeyondMimic asks how to combine learned skills into new task-directed behavior without retraining for every task.</p>
+<p>The guided diffusion policy is the key mechanism:</p>
+<ul>
+<li>the policy carries a learned motion prior</li>
+<li>guidance pushes the generated behavior toward a downstream objective</li>
+<li>the result can remain naturalistic while being task-specific</li>
+</ul>
+<h1>Why It Matters</h1>
+<p>For humanoids, natural motion and task control are often in tension.</p>
+<p>BeyondMimic is interesting because it tries to keep both:</p>
+<ul>
+<li>natural whole-body motion from human demonstrations</li>
+<li>flexible control from test-time guidance</li>
+</ul>
+<p>This is closer to how we want humanoid robots to behave: not just copying a library of clips, but reusing motion knowledge to solve new situations.</p>
+<h1>Relation To DeepMimic And OmniRetarget</h1>
+<p>DeepMimic gives the basic idea: use reference motion to train physically robust skills.</p>
+<p>OmniRetarget focuses on making the reference data better, especially when interactions with objects and terrain matter.</p>
+<p>BeyondMimic focuses on what happens after imitation: how to compose motion skills into versatile control.</p>
+<h1>Limitation</h1>
+<p>The framework still needs a strong motion tracking pipeline and a useful motion dataset. Diffusion guidance also depends on whether the test-time cost captures the task well.</p>
+<p>If the cost is poorly designed, guidance can push the policy toward behavior that satisfies the objective but loses motion quality.</p>
+<h1>Takeaway</h1>
+<p>BeyondMimic is not just “humanoid imitates human motion”. Its real point is:</p>
+<blockquote>
+<p>Learn a rich motion prior, then guide it to solve new control tasks.</p>
+</blockquote>
+<p>That is why it is a useful bridge between motion imitation and general-purpose humanoid control.</p>
 
   </div>
   <div id="gitalk-container"></div>
@@ -480,19 +483,12 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 
     <div class="post-paging">
     
-    <a href="/posts/4d2ac08f.html">
-        <div class="post-paging-last">
-            <span>上一篇</span>
-            <p>DeepMimic</p>
-        </div>
-    </a>
-    
 
     
-    <a href="/posts/e3a7263f.html">
+    <a href="/posts/9e6b2c11.html">
         <div class="post-paging-next">
             <span>下一篇</span>
-            <p>Event3R</p>
+            <p>OmniRetarget</p>
         </div>
     </a>
     
