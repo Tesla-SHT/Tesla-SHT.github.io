@@ -2,6 +2,7 @@
 title: Linux Lookup
 abbrlink: f7b0b433
 date: 2025-08-20 17:05:29
+updated: 2026-06-18 21:35:00
 tags:
 - Linux
 - System
@@ -12,183 +13,482 @@ categories:
 - System
 - AI
 toc: true
-cover: 
+cover:
 ---
+
+This page is a personal Linux command lookup sheet. It now also includes the older [Linux](/posts/15691.html) blog notes.
 
 # Links
 
-https://github.com/HuangJianxjtu/linux_learning/blob/master/ubuntu20_setup_notes.md
+- [Ubuntu 20.04 setup notes](https://github.com/HuangJianxjtu/linux_learning/blob/master/ubuntu20_setup_notes.md)
+- [Vim Handbook](/posts/44303.html)
+- [Docker Setup](/posts/d0c4e12.html)
+
+# Shell Basics
+
+## Basic Commands
+
+- `man <command>`: show the manual page for a command.
+- `mv <src> <dst>`: move a file or directory.
+- `rm <path>`: remove a file or directory.
+- `cat <file>`: print file content.
+- `fg`: resume a paused process in the foreground.
+- `bg`: continue a paused process in the background.
+- `jobs`: list jobs started from the current shell.
+- `touch <file>`: create an empty file or update its timestamp.
+- `chmod +x <file>`: make a file executable.
+
+## Shell Tips
+
+- Use `*` to match multiple characters and `?` to match one character.
+- `Ctrl+D`: exit the shell.
+- `Ctrl+Z`: suspend the current foreground process.
+- `echo "content" > file`: overwrite a file.
+- `echo "content" >> file`: append to a file.
+- `grep "pattern" file`: search for a pattern.
+- `sed -i "/pattern/d" file`: delete matching lines in place.
+
+## Nano
+
+- `Ctrl+X`: exit.
+- `Ctrl+G`: open help.
+- `Ctrl+K`: cut a line.
+- `Ctrl+U`: paste a line.
+- `Ctrl+W`: search.
+- `Ctrl+Y` / `Ctrl+V`: previous / next page.
+- `Ctrl+A` / `Ctrl+E`: line start / line end.
+
+## Shell Scripting
+
+```bash
+# variables
+echo "$VAR"
+expr "$VAR1" + "$VAR2"
+read VAR
+
+# conditional
+if [ condition ]; then
+  echo "true"
+else
+  echo "false"
+fi
+
+# loop
+for VAR in $LIST; do
+  echo "$VAR"
+done
+```
 
 # Installation
 
+## Conda
+
 ```bash
-conda create -n myenv python=3.8 #create new env
-conda remove -n myenv --all #delete the whole env
+conda create -n myenv python=3.8      # create a new env
+conda remove -n myenv --all           # delete the whole env
+conda create -n new_env --clone old_env
+conda env update -f requirement.yml
 ```
 
-## Torch Related
-<!-- two columns, two iamges  in one row -->
+## PyTorch, Torchvision, Python
+
 |||
 |---|---|
-|<img src="/images/LinuxLookup/image.png" style="width:100%;margin:auto;display: block"/>|<img src="/images/LinuxLookup/image1.png" style="width:60%;margin:auto;display: block"/>|
+|<img src="/images/LinuxLookup/image.png" style="width:100%;margin:auto;display:block"/>|<img src="/images/LinuxLookup/image1.png" style="width:60%;margin:auto;display:block"/>|
 
-- install torch/torchvision/torchaudio with specefic cudatoolkit:`pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu117`
+- NVIDIA driver: open `Software & Updates`, then use the `Additional Drivers` tab.
+- Install torch / torchvision / torchaudio with a specific CUDA wheel index:
 
-- Install whl file: `pip install ***.whl `
+```bash
+pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu128
+```
 
-- 国内源 `-i https://pypi.tuna.tsinghua.edu.cn/simple` 
+- Install a local wheel:
+
+```bash
+pip install package.whl
+```
+
+- Temporary PyPI mirror:
+
+```bash
+pip install package_name -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+- Global PyPI mirror:
+
+```bash
+pip config set global.index-url https://mirrors.cloud.tencent.com/pypi/simple
+```
 
 ## Venv
 
-- `python3 -m venv venv` 创建新环境
-- `source venv/bin/activate` 激活环境
-- `deactivate` 退出环境
+```bash
+python3 -m venv venv
+source venv/bin/activate
+deactivate
+```
 
-# System&Terminal
+## AppImage
 
-- Supervise the GPU usage `watch -n 10 nvidia-smi`
+```bash
+chmod a+x *.AppImage
+./*.AppImage
+```
 
-- Look for proxy `env|grep -i proxy`
+## Desktop Shortcut
 
-- Check the system archtecture `uname -m`
+Create a `.desktop` file under `~/.local/share/applications/`:
 
-- Package Management:
+```ini
+[Desktop Entry]
+Name=Another Redis Desktop
+Comment=Another Redis Desktop
+Exec=/opt/Another_Redis_Desktop/Another-Redis-Desktop-Manager.1.5.6.AppImage
+Icon=/opt/Another_Redis_Desktop/ard.png
+Terminal=false
+Type=Application
+Categories=Developer;
+```
 
-  - Installation`sudo dpkg -i package_name.deb`
-  - Uninstallation `sudo dpkg -r package_name`
+## App Notes
 
-- Show the path of the Python intepreter:
+- Zotero: run `./set_launcher_icon`, then link the generated desktop file:
 
-    ```python
-    import sys
-    path = sys.executable
-    print(path)
-    ```
+```bash
+ln -s /path/to/zotero/zotero.desktop ~/.local/share/applications/zotero.desktop
+```
 
-  - Select the Python Intepreter in VSCode:
-    - `Ctrl+Shift+P`  to open the control panel
-    - Choose `Python: Select Interpreter`
+- Zotero WebDAV can use Jianguoyun: `https://dav.jianguoyun.com/dav/`.
+- QQ Music sandbox workaround:
 
-- [Vim Handbook](https://tesla-sht.github.io/posts/44303.html)
+```bash
+qqmusic --no-sandbox
+```
+
+# System & Terminal
+
+- Supervise GPU usage:
+
+```bash
+watch -n 10 nvidia-smi
+```
+
+- Look for proxy:
+
+```bash
+env | grep -i proxy
+```
+
+- Check system architecture:
+
+```bash
+uname -m
+```
+
+- Install / uninstall a `.deb` package:
+
+```bash
+sudo dpkg -i package_name.deb
+sudo dpkg -r package_name
+```
+
+- Show Python interpreter path:
+
+```python
+import sys
+path = sys.executable
+print(path)
+```
+
+- Set proxy in `~/.bashrc` or `~/.zshrc`, then `source ~/.bashrc` or `source ~/.zshrc`:
+
+```bash
+export https_proxy=http://proxy-host:port
+export http_proxy=http://proxy-host:port
+```
+
+## Unpack Files
+
+```bash
+cat event.tar.gz.part-* > event.tar.gz
+tar -xvf archive.tar
+tar -xzvf archive.tar.gz
+tar -xjvf archive.tar.bz2
+unzip archive.zip -d /path/to/directory
+unrar e archive.rar
+```
+
+## Download From URL
+
+```bash
+aria2c -s 10 -x 10 "URL"
+```
+
+`-s` is the split count, and `-x` is the number of connections per server.
+
+## Install / Uninstall Apps
+
+```bash
+sudo apt remove <package_name>  # remove app only
+sudo apt purge <package_name>   # remove app and configuration files
+```
+
+# Terminal Sessions
+
+## Nohup
+
+Run a script in the background:
+
+```bash
+nohup /root/runoob.sh &
+```
+
+The output is written to `nohup.out` by default.
+
+Find and kill the process:
+
+```bash
+ps -aux | grep "runoob.sh"
+kill -9 <PID>
+```
+
+## Tmux
+
+```bash
+vim ~/.tmux.conf
+tmux source-file ~/.tmux.conf
+tmux new -t session_name
+tmux ls
+tmux kill-window -t session_name
+```
+
+- Detach window: `Ctrl+B`, then `D`.
+
+## Zellij
+
+- `ctrl-p + d`: create a pane below.
+- `ctrl-p + r`: create a pane on the right.
+- `ctrl-p + x`: close current pane.
+- `ctrl-q`: quit Zellij.
 
 # Python
 
-`python -c "print('Hello from command line')"` #execute python code directly from CLI
-
-`python -c "import torch; print(torch.cuda.is_available()); print(torch.__version__)"`
-
-`python -m pip install package_name` #install packages using pip
-
-`python [main.py](http://main.py) -h` get the subsequent commands 
+```bash
+python -c "print('Hello from command line')"
+python -c "import torch; print(torch.cuda.is_available()); print(torch.__version__)"
+python -m pip install package_name
+python main.py -h
+```
 
 # Docker
 
-`docker images` 查看当前所有docker镜像
+Docker installation and ROS container setup moved to [Docker Setup](/posts/d0c4e12.html).
 
-`docker rmi [REPOSITORY:TAG]` 删除指定镜像
+Common commands:
 
-# No Hang up
-
-以下命令在后台执行 root 目录下的 [runoob.sh](http://runoob.sh/) 脚本（注意&才能让它在后台运行）
-`nohup /root/runoob.sh &`
-
-并且在当前目录下生成nohup.out文件
-
-以下命令找到这个文件的PID
-`ps -aux | grep "runoob.sh"` 
-进行删除
-`kill -9  进程号PID`
-
-# Errors
-
-## 一些文字没有显示
-
-重启GNOME Shell
-
-按下 Alt + F2
-在弹出的运行对话框中输入字母 r
-按下回车键
-
-## **dpkg: 错误: 另外一个进程已经为 dpkg frontend lock 加锁**
-
-`ps -e | grep apt` 查看apt所有进程
-
-`sudo kill [PID]` kill it
+```bash
+docker images
+docker rmi <REPOSITORY:TAG>
+docker run --rm -it <IMAGE_ID> /bin/bash
+docker ps
+docker ps -a
+```
 
 # Git
 
-## Git checkout and git switch/restore
+## Basic Usage
 
-Actually same while **the latter is more clear** 
-
-```python
-# 切换到一个已存在的分支
-git checkout develop
-# 创建一个新分支并立即切换过去
-git checkout -b new-feature
-# 切换到一个特定的提交（会进入“分离头指针”状态）
-git checkout <commit-hash>
-
-# 撤销工作区中 a.txt 文件的修改，恢复到和暂存区一致的状态
-git checkout -- a.txt
-# 丢弃工作区和暂存区的所有修改，将 a.txt 文件恢复到上一次提交时的状态
-git checkout HEAD -- a.txt
+```bash
+git status
+git add filename.txt
+git add .
+git commit -m "commit message"
+git commit -am "commit message"
+git push -u origin new_branch
 ```
 
-```python
-# 切换到一个已存在的分支 (和 checkout 作用相同)
+## Failure With Git Connection
+
+If port 22 is blocked, use SSH over port 443:
+
+```plain text
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+    User git
+```
+
+Put the block in `~/.ssh/config`.
+
+## Set Username And Email
+
+```bash
+git config --global user.name "Tesla-SHT"
+git config --global user.email "you@example.com"
+```
+
+For private repositories, use a username and PAT instead of a password.
+
+## Remote & Local Branch
+
+- Pull a remote branch to local:
+
+```bash
+git checkout -b branch origin/branch
+```
+
+- Delete a local branch:
+
+```bash
+git checkout another_branch
+git branch -D branch
+```
+
+## Checkout, Switch, Restore
+
+`checkout` can both move branches and restore files. `switch` and `restore` split those ideas more clearly.
+
+```bash
+# checkout
+git checkout develop
+git checkout -b new-feature
+git checkout <commit-hash>
+git checkout -- a.txt
+git checkout HEAD -- a.txt
+
+# switch
 git switch develop
-# 创建一个新分支并立即切换过去 (用 -c 代替 -b，c 代表 create)
 git switch -c new-feature
-# 切换回上一个分支 (这是一个很方便的快捷操作)
 git switch -
 
-# 撤销工作区中 a.txt 的修改 (从暂存区恢复)
+# restore
 git restore a.txt
-# 将暂存区的文件放回工作区 (unstage)
 git restore --staged a.txt
-# 同时撤销工作区和暂存区的修改，从上一次提交恢复文件
 git restore --source=HEAD a.txt
 ```
 
-## Merge one branch to another branch
+## Merge One Branch To Another
 
-- `git pull --rebase`  means fetching all **remote** commits, and the changes will be **after** the newer commits
-- `git push` (suppose on main branch)
-- `git checkout dev` switch to another branch dev
-- `git merge main` merge main to dev
+- `git pull --rebase`: fetch remote commits and replay local commits after them.
+- `git push`: push current branch.
+- `git checkout dev`: switch to `dev`.
+- `git merge main`: merge `main` into `dev`.
 
-## Modify the latest commit:
+## Modify The Latest Commit
 
-- First stash the new changes, then use`git commit --amend` ，use `:wq` to quit the Vim
+```bash
+git reset --soft HEAD^
+git reset --hard HEAD~1
+git commit --amend
+```
+
+Use `git reset --hard` only when you intentionally want to discard local changes.
 
 ## Submodule Tracking
 
-Sometimes, the changes in the submodule may not be tracked.
+Sometimes a submodule may not be tracked as expected.
 
-1. Remove the original tracking: `git rm --cached [File]` 
+1. Remove the original tracking:
 
-2. Delete the `.git` file in submodule and delete the relative file in the root `..git` if exists
+```bash
+git rm --cached <file-or-dir>
+```
 
-3. `git add` the file, same as other changes
-
-    
+2. Delete the `.git` file in the submodule and delete the related file under the root `.git` directory if it exists.
+3. `git add` the file again.
 
 # CUDA
 
-## Assign Process to GPU
+## Assign Process To GPU
 
-- In Terminal: `CUDA_VISIBLE_DEVICES=? python [main.py](http://main.py/)` (GPU start from 0)
-- In Python: `os.environ[“CUDA_VISIBLE_DEVICES”] = “?”`
-- In System: `export CUDA_VISIBLE_DEVICES=?`
+```bash
+CUDA_VISIBLE_DEVICES=0 python main.py
+export CUDA_VISIBLE_DEVICES=0
+```
 
 ```python
-# cuda是否可用，可用返回true, 不可用返回false
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+```
+
+```python
+import torch
+
 torch.cuda.is_available()
-# 查看gpu可用的数量
 torch.cuda.device_count()
-# 返回gpu名称, 默认从0开始
-torch.cuda.get_device_name(0) # 如rtx 3090
-# 返回当前gpu的索引
+torch.cuda.get_device_name(0)
 torch.cuda.current_device()
+```
+
+# VSCode
+
+## Python Interpreter
+
+- `Ctrl+Shift+P`: open command palette.
+- Choose `Python: Select Interpreter`.
+
+## Shortcuts
+
+- `Ctrl+K Ctrl+S`: open keyboard shortcuts.
+- `Ctrl+Shift+F`: global search.
+- `Ctrl+P`: quick open.
+- `Ctrl+Shift+G`: source control.
+- `Ctrl+Shift+D`: debug.
+- `Ctrl+K M`: select language mode.
+- `Ctrl+Alt+N`: run code with Code Runner.
+- `Alt+Z`: toggle word wrap.
+- `Ctrl+Shift+P`: command palette.
+
+## Regular Expression Table
+
+| Basic Syntax | Quantifiers | Position | Group | Common Usage |
+|---|---|---|---|---|
+| Any digit: `\d` | Zero or more: `*` | Start of line: `^` | `(abc)` group, use `$1` in replace | Empty line: `^\s*$` |
+| Word character: `\w` | One or more: `+` | End of line: `$` | `[abc]` matches one of `a`, `b`, `c` | Comments: `//.*` |
+| Whitespace: `\s` | Zero or one: `?` | Word boundary: `\b` | `a\|b` matches `a` or `b` | Quoted text: `"[^"]*"` |
+| Any character: `.` | Exact count: `{n}` |  |  | Escape regex metacharacters such as dot, star, plus, question mark, brackets, pipe, and backslash. |
+
+## Add SiliconFlow Model
+
+1. Install an OAI-compatible extension.
+2. Set the OAI base URL to `https://api.siliconflow.cn/v1`.
+3. Add an OAI model in Copilot or Cline.
+
+# Desktop Environment
+
+## Xfce
+
+If `X server already running on display :0` appears, run:
+
+```bash
+exec startxfce4
+```
+
+Modify lockscreen time:
+
+```conf
+Section "ServerFlags"
+    Option "BlankTime" "0"
+    Option "StandbyTime" "0"
+    Option "SuspendTime" "0"
+    Option "OffTime" "0"
+EndSection
+```
+
+# Errors
+
+## Some Text Is Missing In GNOME
+
+Restart GNOME Shell:
+
+1. Press `Alt+F2`.
+2. Type `r`.
+3. Press `Enter`.
+
+## `dpkg: error: dpkg frontend lock is locked by another process`
+
+```bash
+ps -e | grep apt
+sudo kill <PID>
 ```
