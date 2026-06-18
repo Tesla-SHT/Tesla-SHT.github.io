@@ -4,12 +4,16 @@
 		<% if(theme.home_layout === 'block-card'){ %>
 			<div class="post-block" id="content">
 				<% page.posts.each(function (post,i) { %>
+					<%
+						var coverSeed = encodeURIComponent(post.abbrlink || post.slug || post.path || post.title || i);
+						var fallbackCover = theme.default_cover;
+						if(fallbackCover && fallbackCover.indexOf('picsum.photos') !== -1) {
+							fallbackCover = 'https://picsum.photos/seed/' + coverSeed + '/1920/1080';
+						}
+						var postCover = post.cover || fallbackCover;
+					%>
 					<a href="<%- url_for(post.path) %>" class="post-block-content">
-						<% if(post.cover){ %>
-							<img src="<%= post.cover %>" alt="Quiet">
-						<% }else{ %>
-							<img src="<%- theme.default_cover %>" alt="Quiet">
-						<% } %>
+						<img src="<%= postCover %>" alt="Quiet">
 						<div class="post-block-content-info">
 							<h2><%= post.title %></h2>
 							<span class="post-block-content-info-excerpt">
@@ -33,16 +37,20 @@
 		<% }else{ %>
 			<div class="post-card" id="content">
 				<% page.posts.each(function (post,i) { %>
+					<%
+						var coverSeed = encodeURIComponent(post.abbrlink || post.slug || post.path || post.title || i);
+						var fallbackCover = theme.default_cover;
+						if(fallbackCover && fallbackCover.indexOf('picsum.photos') !== -1) {
+							fallbackCover = 'https://picsum.photos/seed/' + coverSeed + '/1920/1080';
+						}
+						var postCover = post.cover || fallbackCover;
+					%>
 					<div class="post-card-display">
 						<a href="<%- url_for(post.path) %>">
 							<h2 class="post-card-title">
 								<%= post.title %>
 							</h2>
-							<% if(post.cover){ %>
-								<img src="<%= post.cover %>" alt="Quiet">
-							<% }else{ %>
-								<img src="<%- theme.default_cover %>" alt="Quiet">
-							<% } %>
+							<img src="<%= postCover %>" alt="Quiet">
 						</a>
 						<div class="post-card-meat">
 							<div class="meat-info">
