@@ -14,7 +14,7 @@ comments: false
 <section class="academic-profile">
   <p class="profile-lead">
     I am an incoming Ph.D. student at Westlake University, where I will join the
-    <a href="https://ethliup.github.io/" target="_blank" rel="noopener">Spatial Intelligence and Robotics Lab (SIR Lab)</a>
+    <a href="https://ethliup.github.io/" target="_blank" rel="noopener">Spatial Intelligence and Robotics Lab</a>
     under the supervision of Prof. Peidong Liu.
   </p>
   <p>
