@@ -17,8 +17,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="color-scheme" content="light dark">
 <link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
 
+<script>
+  (function () {
+    var key = 'quiet-theme';
+    var savedTheme = null;
+    try {
+      savedTheme = localStorage.getItem(key);
+    } catch (error) {}
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
 
 <link rel="stylesheet" href="/css/index.css">
 
@@ -118,12 +131,50 @@
 									
 				</ul>
 			</div>
+			<button class="search-toggle" id="search-toggle" type="button" aria-label="打开站内搜索" title="打开站内搜索" data-search-index="/search.json">
+				<svg class="search-toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="21" height="21" aria-hidden="true">
+					<path d="M10.8 4a6.8 6.8 0 105.1 11.3l3.4 3.4 1.4-1.4-3.4-3.4A6.8 6.8 0 0010.8 4zm0 2a4.8 4.8 0 110 9.6 4.8 4.8 0 010-9.6z"></path>
+				</svg>
+			</button>
+			<button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换暗黑模式" title="切换暗黑模式">
+				<svg class="theme-toggle-icon theme-toggle-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+					<path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.79 1.42 1.41-1.8 1.8-1.41-1.42zM12 4V1h-2v3h2zm0 19v-3h-2v3h2zm8-10h3v-2h-3v2zM1 13h3v-2H1v2zm4.34 4.74l-1.79 1.8 1.41 1.41 1.8-1.79-1.42-1.42zm13.31 0l-1.41 1.42 1.79 1.79 1.42-1.41-1.8-1.8zM11 7a5 5 0 100 10 5 5 0 000-10z"></path>
+				</svg>
+				<svg class="theme-toggle-icon theme-toggle-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+					<mask id="theme-toggle-moon-mask">
+						<rect width="24" height="24" fill="#fff"></rect>
+						<circle cx="15.4" cy="8.2" r="6.5" fill="#000"></circle>
+					</mask>
+					<circle cx="11.2" cy="12.2" r="8.8" mask="url(#theme-toggle-moon-mask)"></circle>
+				</svg>
+			</button>
 			<div class="h-right-close">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
 					<path fill="none" d="M0 0h24v24H0z" />
 					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
 				</svg>
 			</div>
+		</div>
+	</div>
+	<div class="search-panel" id="search-panel" aria-hidden="true">
+		<div class="search-panel-backdrop" data-search-close></div>
+		<div class="search-panel-dialog" role="dialog" aria-modal="true" aria-labelledby="search-panel-title">
+			<div class="search-panel-header">
+				<h2 id="search-panel-title">Search</h2>
+				<button class="search-panel-close" type="button" aria-label="关闭搜索" title="关闭搜索" data-search-close>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+						<path d="M6.4 5L5 6.4l5.6 5.6L5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4 17.6 5 12 10.6 6.4 5z"></path>
+					</svg>
+				</button>
+			</div>
+			<label class="search-panel-input-wrap" for="search-panel-input">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="21" height="21" aria-hidden="true">
+					<path d="M10.8 4a6.8 6.8 0 105.1 11.3l3.4 3.4 1.4-1.4-3.4-3.4A6.8 6.8 0 0010.8 4zm0 2a4.8 4.8 0 110 9.6 4.8 4.8 0 010-9.6z"></path>
+				</svg>
+				<input id="search-panel-input" type="search" placeholder="Search posts" autocomplete="off" spellcheck="false">
+			</label>
+			<div class="search-panel-status" id="search-panel-status" aria-live="polite"></div>
+			<div class="search-panel-results" id="search-panel-results"></div>
 		</div>
 	</div>
 	<script>
@@ -315,28 +366,6 @@
 			<div class="post-block" id="content">
 				
 					
-					<a href="/posts/44303.html" class="post-block-content">
-						<img src="/images/Vim.jpeg" alt="Quiet">
-						<div class="post-block-content-info">
-							<h2>Vim</h2>
-							<span class="post-block-content-info-excerpt">
-								
-							</span>
-							<div class="post-block-content-info-exhibition">
-								<div class="post-block-content-info-exhibition-tags">
-									<span class="post-tag">
-										Tools
-									</span>
-									<span class="post-tag">
-										2025-08-19
-									</span>
-								</div>
-								<div class="meat-type"></div>
-							</div>
-						</div>
-					</a>
-				
-					
 					<a href="/posts/69c95808.html" class="post-block-content">
 						<img src="/images/VGGT/image.png" alt="Quiet">
 						<div class="post-block-content-info">
@@ -348,6 +377,28 @@
 								<div class="post-block-content-info-exhibition-tags">
 									<span class="post-tag">
 										Paper
+									</span>
+									<span class="post-tag">
+										2025-08-19
+									</span>
+								</div>
+								<div class="meat-type"></div>
+							</div>
+						</div>
+					</a>
+				
+					
+					<a href="/posts/44303.html" class="post-block-content">
+						<img src="/images/Vim.jpeg" alt="Quiet">
+						<div class="post-block-content-info">
+							<h2>Vim</h2>
+							<span class="post-block-content-info-excerpt">
+								
+							</span>
+							<div class="post-block-content-info-exhibition">
+								<div class="post-block-content-info-exhibition-tags">
+									<span class="post-tag">
+										Tools
 									</span>
 									<span class="post-tag">
 										2025-08-19
