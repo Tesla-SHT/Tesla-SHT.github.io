@@ -82,6 +82,7 @@
 				}
 			}
 		}
+		.search-toggle,
 		.theme-toggle {
 			display: inline-flex;
 			align-items: center;
@@ -91,8 +92,6 @@
 			width: 40px;
 			height: 40px;
 			padding: 0;
-			margin-left: 12px;
-			margin-right: 18px;
 			border: 1px solid rgba(18,24,58,.08);
 			border-radius: 50%;
 			background: rgba(18,24,58,.04);
@@ -106,6 +105,12 @@
 				height: 22px;
 				fill: currentColor;
 			}
+			.search-toggle-icon {
+				display: block;
+				width: 21px;
+				height: 21px;
+				fill: currentColor;
+			}
 			.theme-toggle-icon-moon {
 				display: block;
 			}
@@ -114,6 +119,14 @@
 				border-color: rgba(0,106,255,.18);
 				color: #006AFF;
 			}
+		}
+		.search-toggle {
+			margin-left: 12px;
+			margin-right: 14px;
+		}
+		.theme-toggle {
+			margin-left: 0;
+			margin-right: 18px;
 		}
 	}
 	.header-move1 {
@@ -158,12 +171,19 @@
 					height: 2em;
 				}
 			}
+			.search-toggle,
 			.theme-toggle {
 				width: 38px;
 				height: 38px;
-				margin-left: auto;
-				margin-right: 10px;
 				flex: 0 0 auto;
+			}
+			.search-toggle {
+				margin-left: auto;
+				margin-right: 12px;
+			}
+			.theme-toggle {
+				margin-left: 0;
+				margin-right: 10px;
 			}
 		}
 	}  

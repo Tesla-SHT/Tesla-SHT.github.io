@@ -34,6 +34,210 @@ function initThemeToggle() {
     });
 }
 
+function initSiteSearch() {
+    const searchToggle = document.getElementById('search-toggle');
+    const searchPanel = document.getElementById('search-panel');
+    const searchInput = document.getElementById('search-panel-input');
+    const searchResults = document.getElementById('search-panel-results');
+    const searchStatus = document.getElementById('search-panel-status');
+
+    if (!searchToggle || !searchPanel || !searchInput || !searchResults || !searchStatus) {
+        return;
+    }
+
+    const indexUrl = searchToggle.getAttribute('data-search-index') || '/search.json';
+    let searchIndex = [];
+    let searchIndexPromise = null;
+
+    function escapeHtml(value) {
+        return String(value || '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function escapeRegExp(value) {
+        return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function tokenize(value) {
+        return String(value || '')
+            .toLowerCase()
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean);
+    }
+
+    function highlight(value, terms) {
+        if (!terms.length) {
+            return escapeHtml(value);
+        }
+
+        const pattern = terms.map(escapeRegExp).join('|');
+        const matcher = new RegExp(`(${pattern})`, 'ig');
+        const termSet = new Set(terms);
+
+        return String(value || '')
+            .split(matcher)
+            .map(function(part) {
+                return termSet.has(part.toLowerCase())
+                    ? `<mark>${escapeHtml(part)}</mark>`
+                    : escapeHtml(part);
+            })
+            .join('');
+    }
+
+    function loadSearchIndex() {
+        if (!searchIndexPromise) {
+            searchStatus.textContent = 'Loading...';
+            searchIndexPromise = fetch(indexUrl, { cache: 'force-cache' })
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error('Search index request failed');
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    searchIndex = Array.isArray(data) ? data : [];
+                    return searchIndex;
+                })
+                .catch(function() {
+                    searchStatus.textContent = 'Search index failed to load.';
+                    searchIndex = [];
+                    return searchIndex;
+                });
+        }
+
+        return searchIndexPromise;
+    }
+
+    function snippetFor(item, terms) {
+        const source = item.content || item.excerpt || '';
+        const lowerSource = source.toLowerCase();
+        let firstIndex = -1;
+
+        terms.forEach(function(term) {
+            const index = lowerSource.indexOf(term);
+            if (index !== -1 && (firstIndex === -1 || index < firstIndex)) {
+                firstIndex = index;
+            }
+        });
+
+        if (firstIndex === -1) {
+            return item.excerpt || source.slice(0, 180);
+        }
+
+        const start = Math.max(0, firstIndex - 70);
+        const end = Math.min(source.length, start + 190);
+        return `${start > 0 ? '...' : ''}${source.slice(start, end)}${end < source.length ? '...' : ''}`;
+    }
+
+    function searchPosts(query) {
+        const terms = tokenize(query);
+        if (!terms.length) {
+            return [];
+        }
+
+        return searchIndex
+            .map(function(item) {
+                const title = String(item.title || '').toLowerCase();
+                const meta = `${(item.tags || []).join(' ')} ${(item.categories || []).join(' ')}`.toLowerCase();
+                const excerpt = String(item.excerpt || '').toLowerCase();
+                const content = String(item.content || '').toLowerCase();
+                const searchText = `${title} ${meta} ${excerpt} ${content}`;
+
+                if (!terms.every(function(term) { return searchText.indexOf(term) !== -1; })) {
+                    return null;
+                }
+
+                const score = terms.reduce(function(total, term) {
+                    if (title.indexOf(term) !== -1) total += 12;
+                    if (meta.indexOf(term) !== -1) total += 7;
+                    if (excerpt.indexOf(term) !== -1) total += 4;
+                    if (content.indexOf(term) !== -1) total += 1;
+                    return total;
+                }, 0);
+
+                return { item, score };
+            })
+            .filter(Boolean)
+            .sort(function(a, b) {
+                return b.score - a.score;
+            })
+            .slice(0, 12);
+    }
+
+    function renderResults(query) {
+        const terms = tokenize(query);
+        const matches = searchPosts(query);
+
+        if (!terms.length) {
+            searchStatus.textContent = '';
+            searchResults.innerHTML = '';
+            return;
+        }
+
+        if (!matches.length) {
+            searchStatus.textContent = 'No matching posts.';
+            searchResults.innerHTML = '';
+            return;
+        }
+
+        searchStatus.textContent = `${matches.length} result${matches.length > 1 ? 's' : ''}`;
+        searchResults.innerHTML = matches.map(function(match) {
+            const item = match.item;
+            const meta = [item.date, (item.tags || []).slice(0, 3).join(', ')].filter(Boolean).join(' · ');
+            const snippet = snippetFor(item, terms);
+
+            return `
+                <article class="search-result-item">
+                    <a href="${escapeHtml(item.url)}">
+                        <h3>${highlight(item.title, terms)}</h3>
+                        ${meta ? `<div class="search-result-meta">${escapeHtml(meta)}</div>` : ''}
+                        <p>${highlight(snippet, terms)}</p>
+                    </a>
+                </article>
+            `;
+        }).join('');
+    }
+
+    function openSearchPanel() {
+        searchPanel.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('search-open');
+        loadSearchIndex().then(function() {
+            renderResults(searchInput.value);
+        });
+        setTimeout(function() {
+            searchInput.focus();
+        }, 0);
+    }
+
+    function closeSearchPanel() {
+        searchPanel.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('search-open');
+        searchToggle.focus();
+    }
+
+    searchToggle.addEventListener('click', openSearchPanel);
+    searchInput.addEventListener('input', function() {
+        loadSearchIndex().then(function() {
+            renderResults(searchInput.value);
+        });
+    });
+
+    searchPanel.querySelectorAll('[data-search-close]').forEach(function(closeButton) {
+        closeButton.addEventListener('click', closeSearchPanel);
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && searchPanel.getAttribute('aria-hidden') === 'false') {
+            closeSearchPanel();
+        }
+    });
+}
+
 // header 滚动动画
 window.onscroll = function() {
     //为了保证兼容性，这里取两个值，哪个有值取哪一个
@@ -82,4 +286,5 @@ function ready ( fn ) {
 ready(function () {
     contentMove();
     initThemeToggle();
+    initSiteSearch();
 });
