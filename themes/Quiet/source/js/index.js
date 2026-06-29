@@ -1,7 +1,37 @@
 // 内容自动上升
 function contentMove(){
     const contentDom = document.getElementById('content');
+    if (!contentDom) {
+        return;
+    }
     contentDom.classList.add('content-move');
+}
+
+function initThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const storageKey = 'quiet-theme';
+
+    if (!themeToggle) {
+        return;
+    }
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        themeToggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+        themeToggle.setAttribute('aria-label', theme === 'dark' ? '切换浅色模式' : '切换暗黑模式');
+        themeToggle.setAttribute('title', theme === 'dark' ? '切换浅色模式' : '切换暗黑模式');
+    }
+
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    setTheme(currentTheme);
+
+    themeToggle.addEventListener('click', function () {
+        const nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        setTheme(nextTheme);
+        try {
+            localStorage.setItem(storageKey, nextTheme);
+        } catch (error) {}
+    });
 }
 
 // header 滚动动画
@@ -10,6 +40,9 @@ window.onscroll = function() {
     //scrollTop就是触发滚轮事件时滚轮的高度
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     const headerTopDom = document.getElementById('header-top');
+    if (!headerTopDom) {
+        return;
+    }
     if (scrollTop > 100) {
         headerTopDom.classList.remove("header-move2");
         headerTopDom.classList.add('header-move1');
@@ -46,4 +79,7 @@ function ready ( fn ) {
 }
 
 // 执行动画
-ready(contentMove);
+ready(function () {
+    contentMove();
+    initThemeToggle();
+});

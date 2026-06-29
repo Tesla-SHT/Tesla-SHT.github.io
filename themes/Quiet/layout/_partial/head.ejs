@@ -8,8 +8,21 @@ if (page.title) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="color-scheme" content="light dark">
 <link rel="shortcut icon" type="image/x-icon" href="<%- theme.icon %>">
 
+<script>
+  (function () {
+    var key = 'quiet-theme';
+    var savedTheme = null;
+    try {
+      savedTheme = localStorage.getItem(key);
+    } catch (error) {}
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
 <%- css('css/index.css') %>
 <% if (page.type === 'about' || page.layout === 'about') { %>
 <%- css('css/pages/about.css') %>

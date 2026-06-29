@@ -27,6 +27,18 @@
 									<% } %>
 				</ul>
 			</div>
+			<button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换暗黑模式" title="切换暗黑模式">
+				<svg class="theme-toggle-icon theme-toggle-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+					<path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.79 1.42 1.41-1.8 1.8-1.41-1.42zM12 4V1h-2v3h2zm0 19v-3h-2v3h2zm8-10h3v-2h-3v2zM1 13h3v-2H1v2zm4.34 4.74l-1.79 1.8 1.41 1.41 1.8-1.79-1.42-1.42zm13.31 0l-1.41 1.42 1.79 1.79 1.42-1.41-1.8-1.8zM11 7a5 5 0 100 10 5 5 0 000-10z"></path>
+				</svg>
+				<svg class="theme-toggle-icon theme-toggle-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+					<mask id="theme-toggle-moon-mask">
+						<rect width="24" height="24" fill="#fff"></rect>
+						<circle cx="15.4" cy="8.2" r="6.5" fill="#000"></circle>
+					</mask>
+					<circle cx="11.2" cy="12.2" r="8.8" mask="url(#theme-toggle-moon-mask)"></circle>
+				</svg>
+			</button>
 			<div class="h-right-close">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
 					<path fill="none" d="M0 0h24v24H0z" />
