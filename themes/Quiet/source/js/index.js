@@ -22,7 +22,17 @@ function initThemeToggle() {
         themeToggle.setAttribute('title', theme === 'dark' ? '切换浅色模式' : '切换暗黑模式');
     }
 
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    function getAutoTheme() {
+        const hour = new Date().getHours();
+        return hour >= 18 || hour < 6 ? 'dark' : 'light';
+    }
+
+    let savedTheme = null;
+    try {
+        savedTheme = localStorage.getItem(storageKey);
+    } catch (error) {}
+
+    const currentTheme = savedTheme || document.documentElement.getAttribute('data-theme') || getAutoTheme();
     setTheme(currentTheme);
 
     themeToggle.addEventListener('click', function () {

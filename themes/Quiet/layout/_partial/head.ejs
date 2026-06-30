@@ -18,8 +18,8 @@ if (page.title) {
     try {
       savedTheme = localStorage.getItem(key);
     } catch (error) {}
-    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    var hour = new Date().getHours();
+    var theme = savedTheme || (hour >= 18 || hour < 6 ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
   })();
 </script>
