@@ -5,11 +5,11 @@ suffix: Tesla's Blog
 # 作者名称
 author: Tesla
 # 网站关键字
-keyword: Blog, Daily, Study
+keyword: Haotian Shen, Westlake University, Embodied AI, Humanoid Robotics, 3D Perception
 #false是否开启文章背景图显示(随机图片)
 is_article_img: true  
 # 网站描述
-web_description: Discription
+web_description: "Personal website of Haotian Shen, a Ph.D. student at Westlake University researching embodied AI, humanoid robotics, and 3D perception."
 # 首页文章布局 默认 'card' 可选择 'block-card'
 home_layout: block-card
 # 导航名称

@@ -3,7 +3,7 @@ title: About Me
 date: 2024-8-31
 aubot: Haotian Shen
 portrait: /images/Portrait.jpg
-describe: 'Incoming Ph.D. Student | Embodied AI & Humanoid Local Manipulation'
+describe: 'Ph.D. Student at Westlake University | Embodied AI & Humanoid Robotics'
 type: "about"
 layout: "about"
 comments: false
@@ -13,18 +13,32 @@ comments: false
 
 <section class="academic-profile">
   <p class="profile-lead">
-    I am an incoming Ph.D. student at Westlake University, where I will join the
+    I am a Ph.D. student at Westlake University in the
     <a href="https://ethliup.github.io/" target="_blank" rel="noopener">Spatial Intelligence and Robotics Lab</a>
     under the supervision of Prof. Peidong Liu.
   </p>
   <p>
-    My previous research focused on event-based 3D perception, reconstruction, and SLAM. During my Ph.D. study, I am shifting toward Embodied AI, with a current focus on local manipulation for humanoid robots. I am broadly interested in building robotic systems that can perceive geometry, reason about nearby objects, and act reliably in physical environments.
+    My research focuses on Embodied AI and robot learning for humanoids, especially dexterous loco-manipulation from human demonstrations. My earlier work explored event-based 3D reconstruction and SLAM. I am interested in bringing robust spatial perception together with reliable physical interaction.
   </p>
+  <nav class="profile-links" aria-label="Profile links">
+    <a href="mailto:shenhaotian@westlake.edu.cn">Email</a>
+    <a href="https://github.com/Tesla-SHT" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=iDm6aK4AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+    <a href="https://orcid.org/0000-0002-4162-2995" target="_blank" rel="noopener">ORCID</a>
+  </nav>
 </section>
 
 ## News
 
 <div class="news-scroll">
+  <div class="news-item">
+    <div class="news-date">Sep, 2026</div>
+    <div class="news-body">🎉 <strong>[Preprint]</strong> Our paper <a href="https://dexweave.github.io/" target="_blank" rel="noopener">DexWeave</a> is available on arXiv.</div>
+  </div>
+  <div class="news-item">
+    <div class="news-date">Jul, 2026</div>
+    <div class="news-body">📄 <strong>[Preprint]</strong> <a href="https://arxiv.org/abs/2607.15727" target="_blank" rel="noopener">Event3R</a> is available on arXiv.</div>
+  </div>
   <div class="news-item">
     <div class="news-date">Jun, 2026</div>
     <div class="news-body">🎉 <strong>[IROS 2026]</strong> Our paper <strong>Event3R</strong> was accepted to IROS 2026.</div>
@@ -57,6 +71,19 @@ comments: false
 
 <div class="publication-list">
   <article class="publication-item">
+    <div class="pub-venue">arXiv 2026</div>
+    <div class="pub-body">
+      <div class="pub-figure">
+        <img src="/images/DexWeave/teaser.webp" alt="DexWeave humanoid loco-manipulation examples">
+      </div>
+      <h3>DexWeave: Learning Dexterous Humanoid Loco-Manipulation from Human Demonstrations</h3>
+      <p class="pub-authors">Naichuan Sun*, <strong>Haotian Shen*</strong>, Yizhang Zhang, Luying Feng, Haoze Wang, Yuanbo Xiangli, Yaochu Jin, Peidong Liu&dagger;</p>
+      <p class="pub-summary">Interaction-consistent motion retargeting and whole-body policy learning for dexterous humanoid loco-manipulation from human demonstrations.</p>
+      <p class="pub-links"><a href="https://dexweave.github.io/" target="_blank" rel="noopener">Project</a> · <a href="https://arxiv.org/abs/2609.34724" target="_blank" rel="noopener">arXiv</a> · <a href="https://github.com/WU-CVGL/DexWeave" target="_blank" rel="noopener">Code</a></p>
+    </div>
+  </article>
+
+  <article class="publication-item">
     <div class="pub-venue">IROS 2026</div>
     <div class="pub-body">
       <div class="pub-figure">
@@ -65,6 +92,7 @@ comments: false
       <h3>Event3R: Asynchronous-to-Global 3D Reconstruction from Event Camera via Spatial-Temporal Feature Aggregation</h3>
       <p class="pub-authors">Jian Huang*, <strong>Haotian Shen*</strong>, Xinhao Lou, Chengrui Dong, Wenpu Li, Peidong Liu&dagger;</p>
       <p class="pub-summary">A feed-forward event-camera reconstruction framework that predicts globally aligned 3D point clouds from asynchronous event streams.</p>
+      <p class="pub-links"><a href="https://arxiv.org/abs/2607.15727" target="_blank" rel="noopener">arXiv</a> · <a href="https://arxiv.org/pdf/2607.15727" target="_blank" rel="noopener">PDF</a></p>
     </div>
   </article>
 
@@ -89,7 +117,8 @@ comments: false
     <div class="interest-chips">
       <span>Embodied AI</span>
       <span>Humanoid Robotics</span>
-      <span>Local Manipulation</span>
+      <span>Dexterous Manipulation</span>
+      <span>Loco-Manipulation</span>
       <span>Robot Learning</span>
       <span>Spatial Intelligence</span>
       <span>Actionable 3D Perception</span>
@@ -154,13 +183,6 @@ comments: false
     </div>
   </div>
 </div>
-
-## Contact
-
-<p>
-  Email: <a href="mailto:shenhaotian@westlake.edu.cn">shenhaotian@westlake.edu.cn</a><br>
-  GitHub: <a href="https://github.com/Tesla-SHT" target="_blank" rel="noopener">Tesla-SHT</a>
-</p>
 
 ## Blog
 
