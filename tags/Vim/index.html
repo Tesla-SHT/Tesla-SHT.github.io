@@ -27,8 +27,8 @@
     try {
       savedTheme = localStorage.getItem(key);
     } catch (error) {}
-    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    var hour = new Date().getHours();
+    var theme = savedTheme || (hour >= 18 || hour < 6 ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
   })();
 </script>
@@ -37,8 +37,8 @@
 
 
 
-<meta name="keywords" content="Blog, Daily, Study">
-<meta name="description" content="Discription">
+<meta name="keywords" content="Haotian Shen, Westlake University, Embodied AI, Humanoid Robotics, 3D Perception">
+<meta name="description" content="Personal website of Haotian Shen, a Ph.D. student at Westlake University researching embodied AI, humanoid robotics, and 3D perception.">
 
 
 <script src="/js/jquery.min.js"></script>
